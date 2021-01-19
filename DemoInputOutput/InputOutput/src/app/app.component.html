@@ -1,0 +1,5 @@
+<app-input-output [QLTSIN]="QLTSInput" (QLTSOUT)="addNewTS($event)"></app-input-output>
+
+<ul>
+  <li *ngFor="let item of QLTSOUT">{{item}}</li>
+</ul>
