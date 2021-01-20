@@ -1,18 +1,13 @@
 package com.example.AssetManage.dto;
 
+import java.sql.Date;
+
 public class AssetDto {
-	public long assetId;
 	public String assetCode;
 	public String assetName;
-	public long assetType;
-
-	public long getAssetId() {
-		return assetId;
-	}
-
-	public void setAssetId(long assetId) {
-		this.assetId = assetId;
-	}
+	public String assetPrice;
+	public Date assetDayExp;
+	public long assetTypeId;
 
 	public String getAssetCode() {
 		return assetCode;
@@ -22,6 +17,25 @@ public class AssetDto {
 		this.assetCode = assetCode;
 	}
 
+
+
+	public Date getAssetDayExp() {
+		return assetDayExp;
+	}
+
+	public void setAssetDayExp(Date assetDayExp) {
+		this.assetDayExp = assetDayExp;
+	}
+
+	public String getAssetPrice() {
+		return assetPrice;
+	}
+
+	public void setAssetPrice(String assetPrice) {
+		this.assetPrice = assetPrice;
+	}
+
+
 	public String getAssetName() {
 		return assetName;
 	}
@@ -30,11 +44,12 @@ public class AssetDto {
 		this.assetName = assetName;
 	}
 
-	public long getAssetType() {
-		return assetType;
+	public long getAssetTypeId() {
+		return assetTypeId;
 	}
 
-	public void setAssetType(long assetTypeId) {
-		this.assetType = assetTypeId;
+	public void setAssetTypeId(long assetTypeId) {
+		this.assetTypeId = assetTypeId;
 	}
+
 }
