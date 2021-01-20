@@ -1,0 +1,25 @@
+<h2>Binding to the colSpan property</h2>
+  <table border=1>
+    <tr><td>Column 1</td><td>Column 2</td></tr>
+
+    <tr><td [colSpan]="2">Span 2 columns</td></tr>
+  </table>
+
+  <hr />
+  <h2>Button disabled :</h2>
+<button >Click Button</button>
+<br><br>
+  <button [disabled]="isUnchanged">Disabled Button</button>
+  <hr />
+
+
+
+
+    <h2>Binding to a property of a directive</h2>
+    <p [ngClass]="classes">[ngClass] binding to the classes property making this blue</p>
+    <hr />
+<h2>Model property of a custom component:</h2>
+<app-property-detail [childItem]="parentItem"></app-property-detail>
+
+<h3>Pass objects:</h3>
+<app-property-list [items]="currentItems"></app-property-list>
