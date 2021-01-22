@@ -1,0 +1,5 @@
+<p>
+    Your name: {{ name }}
+</p>
+<input type="text" [ngModel]="name" (ngModelChange)="name = $event">
+<app-child-two-way [checked]="xanh"></app-child-two-way>
