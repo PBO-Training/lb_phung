@@ -1,0 +1,31 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>AssetType List</h2>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>assetTypeId</th>
+                    <th>assetTypeCode</th>  
+                    <th>assetTypeName</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let assetType of assetTypes | async">
+                    <td>{{assetType.assetTypeId}}</td>
+                    <td>{{assetType.assetTypeCode}}</td>
+                    <td>{{assetType.assetTypeName}}</td>
+                    
+                    <td>
+                       <button (click)="deleteAssetType(assetType.assetTypeId)" class="btn btn-danger">Delete</button> 
+                        <button (click)="assetTypeDetails(assetType.assetTypeId)" class="btn btn-info"
+                            style="margin-left: 10px">Details</button>
+                            <button (click)="assetTypeUpdate(assetType.assetTypeId)" class="btn btn-info"
+                                style="margin-left: 10px">Update</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
