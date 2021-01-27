@@ -7,12 +7,12 @@ import { Item } from './item';
 })
 export class AppRootComponent implements OnInit {
   constructor() {}
-  item: Item; 
+  item: Item;
 
   items: Item[];
 
   currentItem: Item;
- 
+
 
   ngOnInit(): void {}
 }
