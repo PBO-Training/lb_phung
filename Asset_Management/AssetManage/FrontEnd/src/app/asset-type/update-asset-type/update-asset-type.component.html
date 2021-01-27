@@ -1,0 +1,26 @@
+<h3>Update Employee</h3>
+<div style="width: 400px;">
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Asset Type Id</label>
+            <input type="text" class="form-control" id="assetTypeId" required [(ngModel)]="assetType.assetTypeId"
+                name="assetTypeId">
+        </div>
+        <div class="form-group">
+            <label for="name">Asset Type Code</label>
+            <input type="text" class="form-control" id="assetTypeCode" required [(ngModel)]="assetType.assetTypeCode"
+                name="assetTypeCode">
+        </div>
+
+        <div class="form-group">
+            <label for="name">Asset Type Name</label>
+            <input type="text" class="form-control" id="assetTypeName" required [(ngModel)]="assetType.assetTypeName"
+                name="assetTypeName">
+        </div>        
+
+        <button type="submit" class="btn btn-success">Submit</button>
+        <br>
+        <br>
+        <button (click)="list()" class="btn btn-info">Back to Asset Type List</button>
+    </form>
+</div>

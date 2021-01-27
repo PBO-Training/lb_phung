@@ -1,0 +1,24 @@
+<h3>Create AssetType</h3>
+<div [hidden]="submitted" style="width: 400px;">
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">AssetType Code</label>
+            <input type="text" class="form-control" id="assetTypeCode" required [(ngModel)]="assetType.assetTypeCode"
+                name="assetTypeCode">
+        </div>
+
+        <div class="form-group">
+            <label for="name">AssetType Name</label>
+            <input type="text" class="form-control" id="assetTypeName" required [(ngModel)]="assetType.assetTypeName"
+                name="assetTypeName">
+        </div>        
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+<div [hidden]="!submitted">
+    <h4>Would you like to add an asset type!!</h4>
+    <button class="btn btn-success" (click)="newAssetType()">Add</button>
+    <button class="btn btn-danger" (click)="gotoList()">Cancel</button>
+</div>

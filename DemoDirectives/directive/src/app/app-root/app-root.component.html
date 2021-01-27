@@ -1,0 +1,18 @@
+<app-item-detail></app-item-detail>
+<h2>Built-in attribute directives</h2>
+
+<h3 id="ngModel">NgModel (two-way) Binding</h3>
+
+<fieldset>
+    <h4>NgModel examples</h4>
+    <p>Current item name: {{currentItem.name}}</p>
+    <p>
+        <label for="without">without NgModel:</label>
+        <input [value]="currentItem.name" (input)="currentItem.name=$event.target.value" id="without">
+
+    </p>
+
+    <p>
+        <label for="example-ngModel">[(ngModel)]:</label>
+        <input [(ngModel)]="currentItem.name" id="example-ngModel">
+    </p>

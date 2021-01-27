@@ -1,0 +1,11 @@
+<h2>Wellcom to vn</h2>
+<h3>Your name: {{ user.name }}</h3>
+<label>Your Age:<input #ages></label>  
+<button (click)="check()">Check</button>
+<div *ngIf="user.age >= 18">
+    Bạn có thể xem nội dung 
+</div>
+<div *ngIf="user.age < 18">
+    Ban khong duoc xem noi dung tren
+
+</div>

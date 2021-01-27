@@ -1,0 +1,36 @@
+
+<nav class="navbar navbar-expand-sm bg-info navbar-dark">
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a routerLink="listAssetTypes" class="nav-link" routerLinkActive="active"
+        >AssetType List</a
+      >
+    </li>
+    <li class="nav-item">
+      <a routerLink="addAssetType" class="nav-link" routerLinkActive="active"
+        >Add AssetType</a
+      >
+    </li>
+  </ul>
+</nav>
+
+<div class="container">
+  <br />
+  <h2 style="text-align: center" class="">{{ title }}</h2>
+  <hr />
+  <div class="card">
+    <div class="card-body">
+      <router-outlet></router-outlet>
+      <!-- <app-list-asset-type></app-list-asset-type> -->
+      <!-- <app-detail-asset-type></app-detail-asset-type> -->
+      <!-- <app-create-asset-type></app-create-asset-type> -->
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <span>Asset_Management</span>
+  </div>
+</footer>
