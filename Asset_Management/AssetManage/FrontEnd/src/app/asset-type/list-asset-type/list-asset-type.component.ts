@@ -10,7 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class ListAssetTypeComponent implements OnInit {
   // @Output() SearchType: string;
-  assetTypes: Observable<AssetType[]>;
+  assetTypes: AssetType[];
+  SearchType: any;
   constructor(
     private assetTypeService: AssetTypeService,
     private router: Router
@@ -18,10 +19,24 @@ export class ListAssetTypeComponent implements OnInit {
 
   ngOnInit() {
     this.reloadData();
+    this.SearchType();
   }
   // tslint:disable-next-line: typedef
   reloadData() {
-    this.assetTypes = this.assetTypeService.getAssetTypesList();
+    this.assetTypeService.getAssetTypesList().subscribe(
+      (list) => {
+        console.log(list);
+        this.assetTypes = list;
+      },
+      (error) => console.log(error)
+    );
+    console.log(this.assetTypes);
+  }
+  searchType(){
+    this.assetTypeService.getAssetTypesList().subscribe((search)=>{
+    console.log(search);
+    this.searchType = search;
+  }, (error) => console.log(error));
   }
   // tslint:disable-next-line: typedef
   deleteAssetType(assetTypeid: number) {
@@ -33,7 +48,6 @@ export class ListAssetTypeComponent implements OnInit {
       (error) => console.log(error)
     );
   }
-
   // tslint:disable-next-line: typedef
   assetTypeDetails(assetTypeid: number) {
     this.router.navigate(['details', assetTypeid]);
@@ -42,4 +56,4 @@ export class ListAssetTypeComponent implements OnInit {
   assetTypeUpdate(assetTypeid: number) {
     this.router.navigate(['update', assetTypeid]);
   }
-}
+}//end

@@ -11,21 +11,21 @@ import { Observable } from 'rxjs';
   styleUrls: ['./table.component.css'],
 })
 export class TableComponent implements OnInit {
-  @Input() assetTypes: any;
-  
+  @Input() assetTypes: AssetType[];
+  @Input() searchTypeItem: any;
+  searchText;
   @Output() assetTypeDelete = new EventEmitter<number>();
-  @Output() assetTypeDetail = new EventEmitter<String>();
-  @Output() assetTypeUpdates = new EventEmitter<String>();
+  @Output() assetTypeDetail = new EventEmitter<number>();
+  @Output() assetTypeUpdates = new EventEmitter<number>();
   constructor() {}
   ngOnInit(): void {}
-
   deleteAssetType(value: number) {
     this.assetTypeDelete.emit(value);
   }
-  detailAssetType(value: string) {
+  detailAssetType(value: number) {
     this.assetTypeDetail.emit(value);
   }
-  updateAssetType(value: string) {
+  updateAssetType(value: number) {
     this.assetTypeUpdates.emit(value);
   }
 }

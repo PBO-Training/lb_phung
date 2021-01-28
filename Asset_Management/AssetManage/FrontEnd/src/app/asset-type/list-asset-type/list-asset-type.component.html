@@ -3,12 +3,13 @@
         <h2>AssetType List</h2>
     </div>
     <div class="panel-body">
-        <app-search></app-search>
+        <app-search (SearchType)="searchType()"></app-search>
+
         <app-table [assetTypes]="assetTypes" 
-                    (assetTypeDelete) = "deleteAssetType($event)"
-                    (assetTypeDetail) ="assetTypeDetails($event)"
-                    (assetTypeUpdates) ="assetTypeUpdate($event)"
-        ></app-table>
+                   [searchTypeItem]="searchType" 
+            (assetTypeDelete)="deleteAssetType($event)"
+            (assetTypeDetail)="assetTypeDetails($event)" 
+            (assetTypeUpdates)="assetTypeUpdate($event)"></app-table>
 
 
     </div>

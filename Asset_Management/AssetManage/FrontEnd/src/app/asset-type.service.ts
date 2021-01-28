@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AssetType } from './Entity/assetType';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +9,7 @@ import { Observable } from 'rxjs';
 export class AssetTypeService {
   private Url = ' http://localhost:8080/api/assetType';
   constructor(private http: HttpClient) {}
+
   getAssetTypesList(): Observable<any> {
     return this.http.get(`${this.Url}`);
   }
@@ -29,4 +31,4 @@ export class AssetTypeService {
   updateAssetType(assetTypeId: number, value: any): Observable<Object> {
     return this.http.put(`${this.Url}/${assetTypeId}`, value);
   }
-} // end
+}// end

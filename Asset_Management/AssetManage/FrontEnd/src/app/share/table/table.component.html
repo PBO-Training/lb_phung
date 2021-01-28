@@ -1,14 +1,15 @@
 <table class="table table-striped">
     <thead>
-        <!-- <tr>
-            <th>assetTypeId</th>
-            <th>assetTypeCode</th>
-            <th>assetTypeName</th>
-        </tr> -->
+        <tr>
+            <th>ID</th>
+            <th>Code</th>
+            <th>Name</th>
+        </tr>
     </thead>
    
     <tbody>
-        <tr *ngFor="let assetType of assetTypes | async">
+        <tr *ngFor="let assetType of assetTypes">
+            <td>{{searchTypeItem}}</td>
             <td>{{assetType.assetTypeId}}</td>
             <td>{{assetType.assetTypeCode}}</td>
             <td>{{assetType.assetTypeName}}</td>

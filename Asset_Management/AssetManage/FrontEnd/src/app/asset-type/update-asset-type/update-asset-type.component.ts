@@ -51,6 +51,6 @@ export class UpdateAssetTypeComponent implements OnInit {
     this.router.navigate(['/assetTypes']);
   }
   list() {
-    this.router.navigate(['assetTypes']);
+    this.router.navigate(['listAssetTypes']);
   }
 }

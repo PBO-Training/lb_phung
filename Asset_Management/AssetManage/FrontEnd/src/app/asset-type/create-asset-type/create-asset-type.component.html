@@ -13,12 +13,12 @@
                 name="assetTypeName">
         </div>        
 
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button (click)="newAssetType()" type="submit" class="btn btn-success">Submit</button>
     </form>
 </div>
 
 <div [hidden]="!submitted">
     <h4>Would you like to add an asset type!!</h4>
-    <button class="btn btn-success" (click)="newAssetType()">Add</button>
-    <button class="btn btn-danger" (click)="gotoList()">Cancel</button>
+    <!-- <button class="btn btn-success mr-2" (click)="newAssetType()">Add</button>
+    <button class="btn btn-danger" (click)="gotoList()">Cancel</button> -->
 </div>

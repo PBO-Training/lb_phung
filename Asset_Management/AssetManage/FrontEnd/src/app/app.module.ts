@@ -24,6 +24,7 @@ import { SearchComponent } from './share/search/search.component';
     NavBarComponent,
     TableComponent,
     SearchComponent
+   
   ],
   imports: [
     BrowserModule,
@@ -33,6 +34,6 @@ import { SearchComponent } from './share/search/search.component';
     HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
