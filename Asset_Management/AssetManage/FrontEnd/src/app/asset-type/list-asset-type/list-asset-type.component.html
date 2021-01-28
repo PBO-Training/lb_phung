@@ -4,8 +4,12 @@
     </div>
     <div class="panel-body">
         <app-search></app-search>
-            <app-table></app-table>
-            
-       
+        <app-table [assetTypes]="assetTypes" 
+                    (assetTypeDelete) = "deleteAssetType($event)"
+                    (assetTypeDetail) ="assetTypeDetails($event)"
+                    (assetTypeUpdates) ="assetTypeUpdate($event)"
+        ></app-table>
+
+
     </div>
 </div>

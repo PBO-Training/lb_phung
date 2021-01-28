@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { AssetType } from '../../Entity/assetType';
 import { AssetTypeService } from '../../asset-type.service';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./list-asset-type.component.css'],
 })
 export class ListAssetTypeComponent implements OnInit {
- 
+  // @Output() SearchType: string;
   assetTypes: Observable<AssetType[]>;
   constructor(
     private assetTypeService: AssetTypeService,
@@ -33,6 +33,7 @@ export class ListAssetTypeComponent implements OnInit {
       (error) => console.log(error)
     );
   }
+
   // tslint:disable-next-line: typedef
   assetTypeDetails(assetTypeid: number) {
     this.router.navigate(['details', assetTypeid]);
@@ -42,5 +43,3 @@ export class ListAssetTypeComponent implements OnInit {
     this.router.navigate(['update', assetTypeid]);
   }
 }
-
-

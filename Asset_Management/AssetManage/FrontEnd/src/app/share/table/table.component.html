@@ -1,11 +1,12 @@
 <table class="table table-striped">
     <thead>
-        <tr>
+        <!-- <tr>
             <th>assetTypeId</th>
             <th>assetTypeCode</th>
             <th>assetTypeName</th>
-        </tr>
+        </tr> -->
     </thead>
+   
     <tbody>
         <tr *ngFor="let assetType of assetTypes | async">
             <td>{{assetType.assetTypeId}}</td>
@@ -13,11 +14,11 @@
             <td>{{assetType.assetTypeName}}</td>
 
             <td>
-                <button (click)="deleteAssetType(assetType.assetTypeId)" class="btn btn-danger">Delete</button>
-                <button (click)="assetTypeDetails(assetType.assetTypeId)" class="btn btn-info"
-                    style="margin-left: 10px">Details</button>
-                <button (click)="assetTypeUpdate(assetType.assetTypeId)" class="btn btn-info"
-                    style="margin-left: 10px">Update</button>
+                <button (click)="deleteAssetType(assetType.assetTypeId)" class="btn btn-danger fa fa-trash"></button>
+                <button (click)="detailAssetType(assetType.assetTypeId)" class="btn btn-info fa fa-info"
+                    style="margin-left: 10px"></button>
+                <button (click)="updateAssetType(assetType.assetTypeId)" class="btn btn-info fa fa-pencil-square"
+                    style="margin-left: 10px"></button>
             </td>
         </tr>
     </tbody>
