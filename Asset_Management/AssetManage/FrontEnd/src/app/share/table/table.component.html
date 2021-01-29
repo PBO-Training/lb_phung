@@ -6,22 +6,22 @@
             <th>Name</th>
         </tr>
     </thead>
-   
+
     <tbody>
         <tr *ngFor="let assetType of assetTypes">
-            <td>{{searchTypeItem}}</td>
+
             <td>{{assetType.assetTypeId}}</td>
             <td>{{assetType.assetTypeCode}}</td>
             <td>{{assetType.assetTypeName}}</td>
-
+            
             <td>
                 <button (click)="deleteAssetType(assetType.assetTypeId)" class="btn btn-danger fa fa-trash"></button>
-                <button (click)="detailAssetType(assetType.assetTypeId)" class="btn btn-info fa fa-info"
-                    style="margin-left: 10px"></button>
+
                 <button (click)="updateAssetType(assetType.assetTypeId)" class="btn btn-info fa fa-pencil-square"
+                    style="margin-left: 10px"></button>
+                <button (click)="detailAssetType(assetType.assetTypeId)" class="btn btn-info fa fa-info"
                     style="margin-left: 10px"></button>
             </td>
         </tr>
     </tbody>
 </table>
-

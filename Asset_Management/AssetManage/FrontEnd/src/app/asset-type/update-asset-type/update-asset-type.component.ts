@@ -21,36 +21,36 @@ export class UpdateAssetTypeComponent implements OnInit {
   ngOnInit() {
     this.assetTypeId = this.route.snapshot.params['assetTypeId'];
 
-    this.assetTypeService.getAssetType(this.assetTypeId).subscribe(
-      (data) => {
-        console.log(data);
-        this.assetType = data;
-      },
-      (error) => console.log(error)
-    );
+    // this.assetTypeService.getAssetTypeId(this.assetTypeId).subscribe(
+    //   (data) => {
+    //     console.log(data);
+    //     this.assetType = data;
+    //   },
+    //   (error) => console.log(error)
+    // );
   }
 
-  updateAssetType() {
-    this.assetTypeService
-      .updateAssetType(this.assetTypeId, this.assetType)
-      .subscribe(
-        (data) => {
-          console.log(data);
+  // updateAssetType() {
+  //   this.assetTypeService
+  //     .updateAssetType(this.assetTypeId, this.assetType)
+  //     .subscribe(
+  //       (data) => {
+  //         console.log(data);
 
-          this.gotoList();
-        },
-        (error) => console.log(error)
-      );
-  }
+  //         this.gotoList();
+  //       },
+  //       (error) => console.log(error)
+  //     );
+  // }
 
-  onSubmit() {
-    this.updateAssetType();
-  }
+  // onSubmit() {
+  //   this.updateAssetType();
+  // }
 
-  gotoList() {
-    this.router.navigate(['/assetTypes']);
-  }
-  list() {
-    this.router.navigate(['listAssetTypes']);
-  }
+  // gotoList() {
+  //   this.router.navigate(['/assetTypes']);
+  // }
+  // list() {
+  //   this.router.navigate(['listAssetTypes']);
+  // }
 }

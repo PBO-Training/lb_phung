@@ -1,11 +1,13 @@
 package com.example.AssetManage.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +44,25 @@ public class AssetTypeController {
 		AssetTypeAfterMap assetTypeMap = new AssetTypeAfterMap(assetType);
 		return assetTypeMap;
 	}
-
+	
+	/*
+	 * API Get By Name AssetTypeEntity
+	 */
+	@GetMapping("/searchAssetType/{assetType_name}")
+	public ResponseEntity<?> getByName(@PathVariable("assetType_name") String assetTypeName) {		
+		List<AssetTypeEntity> assetType = assetTypeRepository.searchByName(assetTypeName);
+		
+		List<AssetTypeAfterMap> listAssetTypeMap = new ArrayList<AssetTypeAfterMap>() ;	
+		for (int i = 0; i < assetType.size(); i++) {			
+			System.out.println(assetType.get(i));	
+			AssetTypeAfterMap assetTypeMap = new AssetTypeAfterMap(assetType.get(i));
+			listAssetTypeMap.add(assetTypeMap);
+		};
+		
+		
+//	AssetTypeAfterMap assetTypeMap = new arrayList< AssetTypeAfterMap>(assetType);
+		return null;
+	}
 	/*
 	 * API Create AssetTypeEntity
 	 */

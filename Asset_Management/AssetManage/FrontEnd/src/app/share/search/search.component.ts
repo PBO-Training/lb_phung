@@ -6,12 +6,14 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
-  // searchAsset: string;
-  @Input() SearchText: any;
-  @Output() SearchType = new EventEmitter();
+  SearchText = '';
+
+  @Output() SearchType = new EventEmitter<string>();
   constructor() {}
   ngOnInit(): void {}
-  clickSearch(value: string) {
-    this.SearchType.emit(value);
+  // tslint:disable-next-line: typedef
+  clickSearch() {
+    this.SearchType.emit(this.SearchText);
+
   }
-} //end
+}

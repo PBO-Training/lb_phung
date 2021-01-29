@@ -13,22 +13,24 @@ export class AssetTypeService {
   getAssetTypesList(): Observable<any> {
     return this.http.get(`${this.Url}`);
   }
-  deleteAssetType(assetTypeId: number): Observable<any> {
-    return this.http.delete(`${this.Url}/${assetTypeId}`, {
-      responseType: 'text',
-    });
-  }
-  getAssetType(assetTypeId: number): Observable<any> {
-    return this.http.get(`${this.Url}/${assetTypeId}`);
-  }
+  // deleteAssetType(assetTypeId: number): Observable<any> {
+  //   return this.http.delete(`${this.Url}/${assetTypeId}`, {
+  //     responseType: 'text',
+  //   });
+  // }
+  // getAssetTypeId(assetTypeId: number): Observable<any> {
+  //   return this.http.get(`${this.Url}/${assetTypeId}`, {
+  //    // responseType: 'text',
+  //   });
+  // }
 
-  // tslint:disable-next-line: ban-types
-  createAssetType(assetType: Object): Observable<Object> {
-    return this.http.post(`${this.Url}`, assetType);
-  }
+  // // tslint:disable-next-line: ban-types
+  // createAssetType(assetType: Object): Observable<Object> {
+  //   return this.http.post(`${this.Url}`, assetType);
+  // }
 
-  // tslint:disable-next-line: ban-types
-  updateAssetType(assetTypeId: number, value: any): Observable<Object> {
-    return this.http.put(`${this.Url}/${assetTypeId}`, value);
-  }
+  // // tslint:disable-next-line: ban-types
+  // updateAssetType(assetTypeId: number, value: any): Observable<Object> {
+  //   return this.http.put(`${this.Url}/${assetTypeId}`, value);
+  // }
 }// end
