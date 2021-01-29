@@ -59,9 +59,8 @@ public class AssetTypeController {
 			listAssetTypeMap.add(assetTypeMap);
 		};
 		
-		
-//	AssetTypeAfterMap assetTypeMap = new arrayList< AssetTypeAfterMap>(assetType);
-		return null;
+		//return ResponseEntity.ok(listAssetTypeMap);
+		return new ResponseEntity<List<AssetTypeAfterMap>>(listAssetTypeMap, HttpStatus.OK);
 	}
 	/*
 	 * API Create AssetTypeEntity
