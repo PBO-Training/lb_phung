@@ -14,6 +14,6 @@ export class SearchComponent implements OnInit {
   // tslint:disable-next-line: typedef
   clickSearch() {
     this.SearchType.emit(this.SearchText);
-
+//sconsole.log(this.SearchText)
   }
 }

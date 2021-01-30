@@ -2,6 +2,7 @@ package com.example.AssetManage.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.AssetManage.dto.AssetAfterMap;
 import com.example.AssetManage.dto.AssetTypeAfterMap;
+import com.example.AssetManage.entity.AssetEntity;
 import com.example.AssetManage.entity.AssetTypeEntity;
 import com.example.AssetManage.repository.AssetTypeRepository;
 
@@ -27,12 +31,16 @@ public class AssetTypeController {
 	 * API Get  AssetTypeEntity
 	 */
 	@RequestMapping(value = "/assetType", method = RequestMethod.GET)
-	public ResponseEntity<List<AssetTypeEntity>> listAllContact() {
-		List<AssetTypeEntity> listAssetType = assetTypeRepository.findAll();
-		if (listAssetType.isEmpty()) {
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
+	public ResponseEntity<List<AssetTypeAfterMap>> fineAllAssetEntity() {
+		List<AssetTypeEntity> listAssetEntity = assetTypeRepository.findAll();
+		List<AssetTypeAfterMap> listAssetAfterMap = listAssetEntity.stream().map(AssetTypeAfterMap::new)
+				.collect(Collectors.toList());
+
+		if (listAssetAfterMap.isEmpty()) {
+			return new ResponseEntity<List<AssetTypeAfterMap>>(HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<List<AssetTypeEntity>>(listAssetType, HttpStatus.OK);
+
+		return new ResponseEntity<List<AssetTypeAfterMap>>(listAssetAfterMap, HttpStatus.OK);
 	}
 
 	/*
@@ -49,9 +57,8 @@ public class AssetTypeController {
 	 * API Get By Name AssetTypeEntity
 	 */
 	@GetMapping("/searchAssetType/{assetType_name}")
-	public ResponseEntity<?> getByName(@PathVariable("assetType_name") String assetTypeName) {		
-		List<AssetTypeEntity> assetType = assetTypeRepository.searchByName(assetTypeName);
-		
+	public ResponseEntity<?> searchByName(@PathVariable("assetType_name") String assetTypeName) {		
+		List<AssetTypeEntity> assetType = assetTypeRepository.searchByName(assetTypeName);		
 		List<AssetTypeAfterMap> listAssetTypeMap = new ArrayList<AssetTypeAfterMap>() ;	
 		for (int i = 0; i < assetType.size(); i++) {			
 			System.out.println(assetType.get(i));	

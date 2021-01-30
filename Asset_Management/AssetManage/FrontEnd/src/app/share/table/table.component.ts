@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 export class TableComponent implements OnInit {
   @Input() assetTypes: AssetType[];
   @Input() searchTypeItem: any;
+  @Input() searchName: String;
   searchText;
   @Output() assetTypeDelete = new EventEmitter<number>();
   @Output() assetTypeDetail = new EventEmitter<number>();

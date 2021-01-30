@@ -11,8 +11,9 @@ import { Observable } from 'rxjs';
 export class ListAssetTypeComponent implements OnInit {
   // @Output() SearchType: string;
   assetTypes: AssetType[];
-  SearchType: any;
-  id: number;
+  assetTypeName: string;
+
+
   constructor(
     private assetTypeService: AssetTypeService,
     private router: Router
@@ -30,35 +31,41 @@ export class ListAssetTypeComponent implements OnInit {
     this.assetTypeService.getAssetTypesList().subscribe(
       (list) => {
         this.assetTypes = list;
+
       },
       (error) => console.log(error)
     );
     //console.log(this.assetTypes);
   }
-  // searchType(value: string) {
-  //   this.assetTypeService.getAssetTypesList(value).subscribe(
-  //     (search) => {
-  //       this.reloadData();
-  //     },
-  //     (error) => console.log(error)
-  //   );
-  // }
-  // tslint:disable-next-line: typedef
-  // deleteAssetType(assetTypeid: number) {
-  //   this.assetTypeService.deleteAssetType(assetTypeid).subscribe(
-  //     (data) => {
-  //       console.log(data);
-  //       this.reloadData();
-  //     },
-  //     (error) => console.log(error)
-  //   );
-  // }
-  // // tslint:disable-next-line: typedef
-  // assetTypeDetails(assetTypeid: number) {
-  //   this.router.navigate(['details', assetTypeid]);
-  // }
-  // // tslint:disable-next-line: typedef
-  // assetTypeUpdate(assetTypeid: number) {
-  //   this.router.navigate(['update', assetTypeid]);
-  // }
+  searchByName(assetTypeName: string) {
+    this.assetTypeService.searchByName(assetTypeName).subscribe(
+      (search) => {
+        console.log(search);
+        this.assetTypeName=search;
+      },
+      (error) => console.log(error)
+    );
+  }
+
+
+
+
+
+  deleteAssetType(assetTypeid: number) {
+    this.assetTypeService.deleteAssetType(assetTypeid).subscribe(
+      (data) => {
+        console.log(data);
+        this.reloadData();
+      },
+      (error) => console.log(error)
+    );
+  }
+
+  assetTypeDetails(assetTypeid: number) {
+    this.router.navigate(['details', assetTypeid]);
+  }
+
+  assetTypeUpdate(assetTypeid: number) {
+    this.router.navigate(['update', assetTypeid]);
+  }
 }

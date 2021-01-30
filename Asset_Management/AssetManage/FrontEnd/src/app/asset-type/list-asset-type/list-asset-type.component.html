@@ -1,11 +1,15 @@
 <div class="panel panel-primary">
-    <div class="panel-heading">
-        <h2>AssetType List</h2>
-    </div>
-    <div class="panel-body">
-        <app-search></app-search>
+  <div class="panel-heading">
+    <h2>AssetType List</h2>
+  </div>
+  <div class="panel-body">
+    <app-search (SearchType)="searchByName()"></app-search>
 
-        <app-table [assetTypes]="assetTypes"></app-table>
+    <app-table [assetTypes]="assetTypes"
+    [searchName]="assetTypeName"
+    (assetTypeDelete)="deleteAssetType($event)"
+      (assetTypeDetail)="assetTypeDetails($event)"
+      (assetTypeUpdates)="assetTypeUpdate($event)"></app-table>
 
-    </div>
+  </div>
 </div>
