@@ -1,11 +1,14 @@
 package com.example.AssetManage.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.support.Repositories;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,7 +51,19 @@ public class AssetController {
 
 		return new ResponseEntity<List<AssetAfterMap>>(listAssetAfterMap, HttpStatus.OK);
 	}
-
+	/*
+	 * API Search BY Name AssetEntity
+	 */
+	@GetMapping("/searchAsset/{asset_name}")
+		public ResponseEntity<?> searchByName(@PathVariable("asset_name") String assetName){
+		List<AssetEntity> asset = assetRepository.searchByName(assetName);
+		List<AssetAfterMap> listassetMap = new ArrayList<AssetAfterMap>();
+		for (int i = 0; i < asset.size(); i++) {
+			AssetAfterMap assetMap = new AssetAfterMap(asset.get(i));
+			listassetMap.add(assetMap);			
+		}
+		return ResponseEntity.ok(listassetMap);
+	}
 	/*
 	 * API Get By Id AssetEntity
 	 */

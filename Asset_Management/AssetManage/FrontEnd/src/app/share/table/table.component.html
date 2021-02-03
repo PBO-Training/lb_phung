@@ -1,19 +1,19 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>ID</th>
+            <th>No.</th>
             <th>Code</th>
             <th>Name</th>
         </tr>
     </thead>
 
     <tbody>
-        <tr *ngFor="let assetType of assetTypes">
+        <tr *ngFor="let assetType of assetTypes; let i = index">
 
-            <td>{{assetType.assetTypeId}}</td>
+            <td>{{i+1}}</td>
             <td>{{assetType.assetTypeCode}}</td>
             <td>{{assetType.assetTypeName}}</td>
-            
+
             <td>
                 <button (click)="deleteAssetType(assetType.assetTypeId)" class="btn btn-danger fa fa-trash"></button>
 
@@ -21,6 +21,7 @@
                     style="margin-left: 10px"></button>
                 <button (click)="detailAssetType(assetType.assetTypeId)" class="btn btn-info fa fa-info"
                     style="margin-left: 10px"></button>
+
             </td>
         </tr>
     </tbody>

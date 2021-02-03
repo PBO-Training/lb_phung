@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -9,11 +9,10 @@ export class SearchComponent implements OnInit {
   SearchText = '';
 
   @Output() SearchType = new EventEmitter<string>();
-  constructor() {}
+
+  constructor(private route: ActivatedRoute, private router: Router) {}
   ngOnInit(): void {}
-  // tslint:disable-next-line: typedef
   clickSearch() {
     this.SearchType.emit(this.SearchText);
-//sconsole.log(this.SearchText)
   }
 }

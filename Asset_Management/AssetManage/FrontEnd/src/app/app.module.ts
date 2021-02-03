@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule,  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DemoMaterialModule } from './material-module';
 
 import { CreateAssetTypeComponent } from './asset-type/create-asset-type/create-asset-type.component';
 import { DetailAssetTypeComponent } from './asset-type/detail-asset-type/detail-asset-type.component';
@@ -13,6 +14,9 @@ import { UpdateAssetTypeComponent } from './asset-type/update-asset-type/update-
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { TableComponent } from './share/table/table.component';
 import { SearchComponent } from './share/search/search.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
@@ -23,8 +27,7 @@ import { SearchComponent } from './share/search/search.component';
     UpdateAssetTypeComponent,
     NavBarComponent,
     TableComponent,
-    SearchComponent
-   
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,8 @@ import { SearchComponent } from './share/search/search.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    DemoMaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

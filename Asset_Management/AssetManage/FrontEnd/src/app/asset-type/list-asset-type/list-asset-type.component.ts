@@ -1,4 +1,10 @@
-import { Component, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { AssetType } from '../../Entity/assetType';
 import { AssetTypeService } from '../../asset-type.service';
 import { Router } from '@angular/router';
@@ -8,53 +14,51 @@ import { Observable } from 'rxjs';
   templateUrl: './list-asset-type.component.html',
   styleUrls: ['./list-asset-type.component.css'],
 })
-export class ListAssetTypeComponent implements OnInit {
-  // @Output() SearchType: string;
+export class ListAssetTypeComponent implements OnInit, OnChanges {
   assetTypes: AssetType[];
-  assetTypeName: string;
-
+  assetTypeReq: AssetType;
 
   constructor(
     private assetTypeService: AssetTypeService,
     private router: Router
   ) {}
 
+  ngOnChanges(changes: SimpleChanges): void {
+    // this.assetTypes = changes.assetTypeName.currentValue;
+
+    throw new Error('Method not implemented.');
+  }
+
   ngOnInit() {
     this.reloadData();
     //this.SearchType();
   }
-  // getById(assetTypeId: number) {
-  //   this.assetTypeService.getAssetTypeId();
-  // }
-  // tslint:disable-next-line: typedef
-  reloadData() {
+
+  reloadData(): void {
     this.assetTypeService.getAssetTypesList().subscribe(
       (list) => {
         this.assetTypes = list;
-
       },
       (error) => console.log(error)
     );
-    //console.log(this.assetTypes);
   }
-  searchByName(assetTypeName: string) {
-    this.assetTypeService.searchByName(assetTypeName).subscribe(
+
+  searchByName(value: string): void {
+    this.assetTypeReq = {
+      ...this.assetTypeReq,
+      assetTypeName: value,
+    };
+    this.assetTypeService.searchFollowCondition(this.assetTypeReq).subscribe(
       (search) => {
-        console.log(search);
-        this.assetTypeName=search;
+        this.assetTypes = search;
       },
       (error) => console.log(error)
     );
   }
-
-
-
-
 
   deleteAssetType(assetTypeid: number) {
     this.assetTypeService.deleteAssetType(assetTypeid).subscribe(
       (data) => {
-        console.log(data);
         this.reloadData();
       },
       (error) => console.log(error)

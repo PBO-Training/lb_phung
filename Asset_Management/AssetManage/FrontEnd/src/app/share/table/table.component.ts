@@ -12,14 +12,17 @@ import { Observable } from 'rxjs';
 })
 export class TableComponent implements OnInit {
   @Input() assetTypes: AssetType[];
-  @Input() searchTypeItem: any;
-  @Input() searchName: String;
-  searchText;
+  //@Input() searchTypeItem: any;
+
+
   @Output() assetTypeDelete = new EventEmitter<number>();
   @Output() assetTypeDetail = new EventEmitter<number>();
   @Output() assetTypeUpdates = new EventEmitter<number>();
   constructor() {}
   ngOnInit(): void {}
+
+
+
   deleteAssetType(value: number) {
     this.assetTypeDelete.emit(value);
   }

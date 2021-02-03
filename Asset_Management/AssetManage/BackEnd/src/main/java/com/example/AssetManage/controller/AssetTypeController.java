@@ -10,9 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.AssetManage.dto.AssetAfterMap;
@@ -56,11 +58,12 @@ public class AssetTypeController {
 	/*
 	 * API Get By Name AssetTypeEntity
 	 */
-	@GetMapping("/searchAssetType/{assetType_name}")
-	public ResponseEntity<?> searchByName(@PathVariable("assetType_name") String assetTypeName) {		
-		List<AssetTypeEntity> assetType = assetTypeRepository.searchByName(assetTypeName);		
+	@PostMapping("/searchAssetType")
+	public ResponseEntity<?> searchByName(@RequestBody AssetTypeEntity assetTypeEntity) {
+		
+		List<AssetTypeEntity> assetType = assetTypeRepository.searchByName(assetTypeEntity.getAssetTypeName());		
 		List<AssetTypeAfterMap> listAssetTypeMap = new ArrayList<AssetTypeAfterMap>() ;	
-		for (int i = 0; i < assetType.size(); i++) {			
+		for (int i = 0; i < assetType.size(); i++) {
 			System.out.println(assetType.get(i));	
 			AssetTypeAfterMap assetTypeMap = new AssetTypeAfterMap(assetType.get(i));
 			listAssetTypeMap.add(assetTypeMap);
@@ -69,6 +72,9 @@ public class AssetTypeController {
 		//return ResponseEntity.ok(listAssetTypeMap);
 		return new ResponseEntity<List<AssetTypeAfterMap>>(listAssetTypeMap, HttpStatus.OK);
 	}
+	
+	
+	
 	/*
 	 * API Create AssetTypeEntity
 	 */
@@ -79,11 +85,10 @@ public class AssetTypeController {
 	/*
 	 * API Update AssetTypeEntity
 	 */
-	@RequestMapping(value = "/assetType/{assetType_id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/updateAssetType", method = RequestMethod.POST)
 
-	public ResponseEntity<AssetTypeEntity> updateAssetType(@PathVariable(value = "assetType_id") Long assetTypeId,
-			@RequestBody AssetTypeEntity assetTypeEntity) {
-		AssetTypeEntity assetType = assetTypeRepository.getOne(assetTypeId);
+	public ResponseEntity<AssetTypeEntity> updateAssetType(@RequestBody AssetTypeEntity assetTypeEntity) {
+		AssetTypeEntity assetType = assetTypeRepository.getOne(assetTypeEntity.getAssetTypeId());
 
 		if (assetType == null) {
 			return ResponseEntity.notFound().build();
