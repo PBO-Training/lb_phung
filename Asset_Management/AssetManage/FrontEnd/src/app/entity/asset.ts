@@ -1,4 +1,4 @@
-export interface AssetType {
+export interface Asset {
   assetId: number;
   assetCode: string;
   assetName: string;

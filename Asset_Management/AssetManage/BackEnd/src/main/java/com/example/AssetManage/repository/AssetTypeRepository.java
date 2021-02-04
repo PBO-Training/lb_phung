@@ -11,7 +11,9 @@ import com.example.AssetManage.entity.AssetTypeEntity;
 
 @Repository
 public interface AssetTypeRepository extends JpaRepository<AssetTypeEntity, Long> {
-@Query(value="select * from asset_type where asset_type_name like %:assetTypeName%", nativeQuery = true)	
+	@Query(value = "select * from asset_type where asset_type_name like %:assetTypeName%", nativeQuery = true)
 	List<AssetTypeEntity> searchByName(@Param("assetTypeName") String name);
 
+	@Query(value = "select * from asset_type where asset_type_code = ':assetTypeCode'", nativeQuery = true)
+	List<AssetTypeEntity> searchByCode(@Param("assetTypeCode") String code);
 }

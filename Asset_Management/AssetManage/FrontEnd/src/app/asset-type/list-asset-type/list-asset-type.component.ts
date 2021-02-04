@@ -20,7 +20,7 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
   columnTables = ['Code', 'Name'];
   fieldName = ['assetTypeCode', 'assetTypeName'];
   assetTypeId = 'assetTypeId';
-  hiddenButtonDelete = true;
+
   constructor(
     private assetTypeService: AssetTypeService,
     private router: Router
@@ -28,7 +28,6 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     // this.assetTypes = changes.assetTypeName.currentValue;
-
     throw new Error('Method not implemented.');
   }
 
@@ -47,6 +46,8 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
   }
 
   searchByName(value: string): void {
+    console.log(this.searchByName);
+
     this.assetTypeReq = {
       ...this.assetTypeReq,
       assetTypeName: value,
@@ -59,8 +60,21 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
     );
   }
 
-  deleteAssetType(assetTypeid: number) {
-    this.assetTypeService.deleteAssetType(assetTypeid).subscribe(
+  searchByCode(value: string): void {
+    this.assetTypeReq = {
+      ...this.assetTypeReq,
+      assetTypeCode: value,
+    };
+    this.assetTypeService.searchCodeAssetType(this.assetTypeReq).subscribe(
+      (search) => {
+        this.assetTypeTable = search;
+      },
+      (error) => console.log(error)
+    );
+  }
+
+  deleteAssetType(body: number) {
+    this.assetTypeService.deleteAssetType(body).subscribe(
       (data) => {
         this.reloadData();
       },
@@ -68,8 +82,11 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
     );
   }
 
-  assetTypeDetails(assetTypeid: number) {
-    this.router.navigate(['details', assetTypeid]);
+  assetTypeDetails(assetTypeid: number, action: string) {
+    console.log("sss",assetTypeid);
+    // console.log(action);
+
+    this.router.navigate(['details', assetTypeid, action]);
   }
 
   assetTypeUpdate(assetTypeid: number) {

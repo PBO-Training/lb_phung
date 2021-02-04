@@ -6,13 +6,19 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
-  SearchText = '';
+  SearchByName = '';
+  SearchByCode = '';
 
-  @Output() SearchType = new EventEmitter<string>();
+  @Output() SearchName = new EventEmitter<string>();
+  // @Output() SearchCode = new EventEmitter<string>();
 
   constructor(private route: ActivatedRoute, private router: Router) {}
   ngOnInit(): void {}
   clickSearch() {
-    this.SearchType.emit(this.SearchText);
+    this.SearchName.emit(this.SearchByName);
+    // this.SearchCode.emit(this.SearchByCode);
+    console.log(this.SearchByName);
+
   }
+
 }
