@@ -18,7 +18,7 @@ export class DetailAssetTypeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.assetTypeId = this.route.snapshot.params['assetTypeId'];
+    this.assetTypeId = this.route.snapshot.params.assetTypeId;
     this.assetTypeService.getAssetTypeId(this.assetTypeId).subscribe(
       (data) => {
         console.log(data);

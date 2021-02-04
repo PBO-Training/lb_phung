@@ -25,22 +25,19 @@ export class UpdateAssetTypeComponent implements OnInit {
 
   onSubmit() {
     console.log('value form', this.assetTypeForm.value);
-
     this.assetType = {
       assetTypeId: this.assetTypeId,
       assetTypeCode: this.assetTypeForm.value.assetTypeCode,
       assetTypeName: this.assetTypeForm.value.assetTypeName,
     };
-    console.log('req', this.assetType);
-
     this.assetTypeService.updateAssetType(this.assetType).subscribe(
       (data) => {
         console.log(data);
-
         this.gotoList();
       },
       (error) => console.log(error)
     );
+
   }
   ngOnInit(): void {
     this.assetTypeId = this.route.snapshot.params.assetTypeId;
@@ -53,12 +50,10 @@ export class UpdateAssetTypeComponent implements OnInit {
       },
       (error) => console.log(error)
     );
+
+  }
+  gotoList() {
+    this.router.navigate(['/listAssetTypes']);
   }
 
-  gotoList() {
-    this.router.navigate(['/assetTypes']);
-  }
-  list() {
-    this.router.navigate(['listAssetTypes']);
-  }
 }

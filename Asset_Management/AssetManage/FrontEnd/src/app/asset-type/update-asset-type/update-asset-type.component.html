@@ -3,18 +3,16 @@
   <form [formGroup]="assetTypeForm" (ngSubmit)="onSubmit()">
     <div class="form-Group">
       <label for="name">Asset Type Code</label>
-      <input type="text" class="form-control" formControlName="assetTypeCode" name="assetTypeCode">
+      <input type="text" class="form-control" formControlName="assetTypeCode" >
     </div>
     <div>
       <label for="name">Asset Type Name</label>
-      <input type="text" class="form-control" formControlName="assetTypeName" name="assetTypeName">
+      <input type="text" class="form-control" formControlName="assetTypeName" >
     </div>
 
     <button type="submit" class="btn btn-success my-2">Submit
 
     </button>
-    <br>
-    <br>
-    <!-- <button (click)="list()" class="btn btn-info">Back to Asset Type List</button> -->
+
   </form>
 </div>

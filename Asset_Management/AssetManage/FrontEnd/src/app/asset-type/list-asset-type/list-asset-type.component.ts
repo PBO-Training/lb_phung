@@ -15,9 +15,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./list-asset-type.component.css'],
 })
 export class ListAssetTypeComponent implements OnInit, OnChanges {
-  assetTypes: AssetType[];
+  assetTypeTable: AssetType[];
   assetTypeReq: AssetType;
-
+  columnTables = ['Code', 'Name'];
+  fieldName = ['assetTypeCode', 'assetTypeName'];
+  assetTypeId = 'assetTypeId';
+  hiddenButtonDelete = true;
   constructor(
     private assetTypeService: AssetTypeService,
     private router: Router
@@ -31,13 +34,13 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.reloadData();
-    //this.SearchType();
   }
-
   reloadData(): void {
     this.assetTypeService.getAssetTypesList().subscribe(
       (list) => {
-        this.assetTypes = list;
+        console.log(list);
+
+        this.assetTypeTable = list;
       },
       (error) => console.log(error)
     );
@@ -48,9 +51,9 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
       ...this.assetTypeReq,
       assetTypeName: value,
     };
-    this.assetTypeService.searchFollowCondition(this.assetTypeReq).subscribe(
+    this.assetTypeService.searchNameAssetType(this.assetTypeReq).subscribe(
       (search) => {
-        this.assetTypes = search;
+        this.assetTypeTable = search;
       },
       (error) => console.log(error)
     );

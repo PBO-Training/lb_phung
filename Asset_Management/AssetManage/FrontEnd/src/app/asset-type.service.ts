@@ -24,7 +24,7 @@ export class AssetTypeService {
   //   }
   // }
 
-  searchFollowCondition(body: AssetType): Observable<any> {
+  searchNameAssetType(body: AssetType): Observable<any> {
     return this.http.post<any>(`${this.SearchNameUrl}`, body);
   }
 

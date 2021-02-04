@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { AssetType } from '../../Entity/assetType';
 import { AssetTypeService } from '../../asset-type.service';
@@ -10,26 +10,30 @@ import { Observable } from 'rxjs';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css'],
 })
-export class TableComponent implements OnInit {
-  @Input() assetTypes: AssetType[];
-  //@Input() searchTypeItem: any;
+export class TableComponent implements OnInit, OnChanges {
+  @Input() data: any[];
+  @Input() columnTitle: any[];
+  @Input() fieldName: any[];
+  @Input() Id: any;
+  @Input() hidden: boolean;
+  @Output() delete = new EventEmitter<number>();
+  @Output() detail = new EventEmitter<number>();
+  @Output() updates = new EventEmitter<number>();
 
-
-  @Output() assetTypeDelete = new EventEmitter<number>();
-  @Output() assetTypeDetail = new EventEmitter<number>();
-  @Output() assetTypeUpdates = new EventEmitter<number>();
   constructor() {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.data);
+  }
   ngOnInit(): void {}
 
-
-
-  deleteAssetType(value: number) {
-    this.assetTypeDelete.emit(value);
+  deleteRecord(value: number): void {
+    this.delete.emit(value);
   }
-  detailAssetType(value: number) {
-    this.assetTypeDetail.emit(value);
+  detailRecord(value: number): void {
+    this.detail.emit(value);
   }
-  updateAssetType(value: number) {
-    this.assetTypeUpdates.emit(value);
+  updatesRecord(value: number): void {
+    this.updates.emit(value);
   }
 }

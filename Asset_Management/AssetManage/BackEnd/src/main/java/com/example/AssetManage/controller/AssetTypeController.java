@@ -29,8 +29,9 @@ import com.example.AssetManage.repository.AssetTypeRepository;
 public class AssetTypeController {
 	@Autowired
 	AssetTypeRepository assetTypeRepository;
+
 	/*
-	 * API Get  AssetTypeEntity
+	 * API Get AssetTypeEntity
 	 */
 	@RequestMapping(value = "/assetType", method = RequestMethod.GET)
 	public ResponseEntity<List<AssetTypeAfterMap>> fineAllAssetEntity() {
@@ -54,27 +55,24 @@ public class AssetTypeController {
 		AssetTypeAfterMap assetTypeMap = new AssetTypeAfterMap(assetType);
 		return assetTypeMap;
 	}
-	
+
 	/*
 	 * API Get By Name AssetTypeEntity
 	 */
 	@PostMapping("/searchAssetType")
 	public ResponseEntity<?> searchByName(@RequestBody AssetTypeEntity assetTypeEntity) {
-		
-		List<AssetTypeEntity> assetType = assetTypeRepository.searchByName(assetTypeEntity.getAssetTypeName());		
-		List<AssetTypeAfterMap> listAssetTypeMap = new ArrayList<AssetTypeAfterMap>() ;	
+
+		List<AssetTypeEntity> assetType = assetTypeRepository.searchByName(assetTypeEntity.getAssetTypeName());
+		List<AssetTypeAfterMap> listAssetTypeMap = new ArrayList<AssetTypeAfterMap>();
 		for (int i = 0; i < assetType.size(); i++) {
-			System.out.println(assetType.get(i));	
+			System.out.println(assetType.get(i));
 			AssetTypeAfterMap assetTypeMap = new AssetTypeAfterMap(assetType.get(i));
 			listAssetTypeMap.add(assetTypeMap);
 		};
-		
-		//return ResponseEntity.ok(listAssetTypeMap);
+		// return ResponseEntity.ok(listAssetTypeMap);
 		return new ResponseEntity<List<AssetTypeAfterMap>>(listAssetTypeMap, HttpStatus.OK);
 	}
-	
-	
-	
+
 	/*
 	 * API Create AssetTypeEntity
 	 */
@@ -82,11 +80,11 @@ public class AssetTypeController {
 	public AssetTypeEntity saveAssetType(@RequestBody AssetTypeEntity assetTypeEntity) {
 		return assetTypeRepository.save(assetTypeEntity);
 	}
+
 	/*
 	 * API Update AssetTypeEntity
 	 */
 	@RequestMapping(value = "/updateAssetType", method = RequestMethod.POST)
-
 	public ResponseEntity<AssetTypeEntity> updateAssetType(@RequestBody AssetTypeEntity assetTypeEntity) {
 		AssetTypeEntity assetType = assetTypeRepository.getOne(assetTypeEntity.getAssetTypeId());
 

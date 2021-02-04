@@ -4,9 +4,16 @@
   </div>
   <div class="panel-body">
     <app-search (SearchType)="searchByName($event)"></app-search>
-    <app-table [assetTypes]="assetTypes"
-    (assetTypeDelete)="deleteAssetType($event)"
-      (assetTypeDetail)="assetTypeDetails($event)"
-      (assetTypeUpdates)="assetTypeUpdate($event)"></app-table>
+    <app-table [data]="assetTypeTable"
+              [columnTitle]="columnTables"
+              [fieldName]="fieldName"
+              [Id]="assetTypeId"
+              [hidden]="hiddenButtonDelete"
+      (delete)="deleteAssetType($event)"
+      (detail)="assetTypeDetails($event)"
+      (updates)="assetTypeUpdate($event)"
+
+
+      ></app-table>
   </div>
 </div>

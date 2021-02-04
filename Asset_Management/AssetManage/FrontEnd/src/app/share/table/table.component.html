@@ -1,25 +1,25 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>No.</th>
-            <th>Code</th>
-            <th>Name</th>
+          <th>No.</th>
+          <th *ngFor="let title of columnTitle">
+            {{title}}
+          </th>
+
         </tr>
     </thead>
 
     <tbody>
-        <tr *ngFor="let assetType of assetTypes; let i = index">
-
-            <td>{{i+1}}</td>
-            <td>{{assetType.assetTypeCode}}</td>
-            <td>{{assetType.assetTypeName}}</td>
-
-            <td>
-                <button (click)="deleteAssetType(assetType.assetTypeId)" class="btn btn-danger fa fa-trash"></button>
-
-                <button (click)="updateAssetType(assetType.assetTypeId)" class="btn btn-info fa fa-pencil-square"
+        <tr *ngFor="let item of data; let i = index">
+          <td>{{i+1}}</td>
+          <ng-container *ngFor="let element of fieldName">
+            <td>{{item[element]}}</td>
+          </ng-container>
+            <td >
+                <button (click)="deleteRecord(item[Id])" [hidden]="hidden" class=" btn btn-danger fa fa-trash"></button>
+                <button (click)="updatesRecord(item[Id])" class="btn btn-info fa fa-pencil-square"
                     style="margin-left: 10px"></button>
-                <button (click)="detailAssetType(assetType.assetTypeId)" class="btn btn-info fa fa-info"
+                <button (click)="detailRecord(item[Id])" class="btn btn-info fa fa-info"
                     style="margin-left: 10px"></button>
 
             </td>
