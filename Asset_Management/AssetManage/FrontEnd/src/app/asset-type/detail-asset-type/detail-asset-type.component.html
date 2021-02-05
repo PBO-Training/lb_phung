@@ -1,16 +1,15 @@
 <h2>Asset Type Details</h2>
 
 <hr />
-<div *ngIf="assetType">
-    <div>
-        <label><b>asset Type Code: </b></label> {{assetType.assetTypeCode}}
-    </div>
-    <div>
-        <label><b>asset Type Name: </b></label> {{assetType.assetTypeName}}
-    </div>
-    
-</div>
+<form [formGroup]="assetTypeForm">
+  <div class="form-Group">
+    <label for="name">Asset Type Code: </label> <b> {{assetTypeForm.value.assetTypeCode}}</b>
+  </div>
+  <div>
+    <label for="name">Asset Type Name: </label> <b> {{assetTypeForm?.value.assetTypeName}}</b>
+  </div>
 
+</form>
 <br>
 <br>
 <button (click)="list()" class="btn btn-info">Back to Asset Type List</button><br>

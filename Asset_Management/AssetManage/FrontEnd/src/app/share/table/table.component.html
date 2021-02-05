@@ -1,27 +1,27 @@
 <table class="table table-striped">
-    <thead>
-        <tr>
-          <th>No.</th>
-          <th *ngFor="let title of columnTitle">
-            {{title}}
-          </th>
-          <th>Action</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th *ngFor="let title of columnTitle">
+        {{title}}
+      </th>
+      <th *ngIf="fieldId">Action</th>
+    </tr>
+  </thead>
 
-    <tbody>
-        <tr *ngFor="let item of data ; let i = index">
-          <td>{{i+1}}</td>
-          <ng-container *ngFor="let element of fieldName ">
-            <td>{{item[element]}}</td>
-          </ng-container>
-            <td >
-                <button (click)="onClick(item[Id],'delete')"  class=" btn btn-danger fa fa-trash"></button>
-                <button (click)="onClick(item[Id],'update')"  class="btn btn-info fa fa-pencil-square"
-                    style="margin-left: 10px"></button>
-                <button (click)="onClick(item[Id],'details')"  class="btn btn-info fa fa-info"
-                    style="margin-left: 10px"></button>
-            </td>
-        </tr>
-    </tbody>
+  <tbody>
+    <tr *ngFor="let item of data ; let i = index">
+      <td>{{i+1}}</td>
+      <ng-container *ngFor="let element of fieldName ">
+        <td>{{item[element]}}</td>
+      </ng-container>
+      <td *ngIf="fieldId">
+        <button *ngIf="deletee" (click)="onClick(item[fieldId],'delete')" class=" btn btn-danger fa fa-trash"></button>
+        <button *ngIf="update"(click)="onClick(item[fieldId],'update')" class="btn btn-info fa fa-pencil-square"
+          style="margin-left: 10px"></button>
+        <button  *ngIf="details"(click)="onClick(item[fieldId],'details')" class="btn btn-info fa fa-info"
+          style="margin-left: 10px"></button>
+      </td>
+    </tr>
+  </tbody>
 </table>

@@ -7,20 +7,23 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
   styleUrls: ['./table.component.css'],
 })
 export class TableComponent implements OnInit, OnChanges {
-  @Input() data: any[];
-  @Input() columnTitle: any[];
-  @Input() fieldName: any[];
-  @Input() Id: number;
+  @Input() data: [];
+  @Input() columnTitle: [];
+  @Input() fieldName: [];
+  @Input() fieldId: string;
+  @Input() details = true;
+  @Input() deletee = true;
+  @Input() update = true;
 
   @Output() buttonValue = new EventEmitter<any>();
 
   constructor() {}
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.data);
+  ngOnChanges(changes: SimpleChanges): void {}
+  ngOnInit(): void {
+
   }
-  ngOnInit(): void {}
 
   onClick(value: string, action: string): void {
-    this.buttonValue.emit({value, action});
+    this.buttonValue.emit({ value, action });
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AssetTypeService } from '../../asset-type.service';
+import { AssetTypeService } from '../../service/asset-type.service';
 import { AssetType } from '../../Entity/assetType';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';

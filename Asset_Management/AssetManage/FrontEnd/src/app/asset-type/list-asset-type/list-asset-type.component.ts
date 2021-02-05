@@ -6,8 +6,8 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { AssetType } from '../../Entity/assetType';
-import { AssetTypeService } from '../../asset-type.service';
-import { Router } from '@angular/router';
+import { AssetTypeService } from '../../service/asset-type.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 @Component({
   selector: 'app-list-asset-type',
@@ -15,6 +15,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./list-asset-type.component.css'],
 })
 export class ListAssetTypeComponent implements OnInit, OnChanges {
+
   assetTypeTable: AssetType[];
   assetTypeReq: AssetType;
   columnTables = ['Code', 'Name'];
@@ -27,7 +28,6 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    // this.assetTypes = changes.assetTypeName.currentValue;
     throw new Error('Method not implemented.');
   }
 
@@ -73,23 +73,28 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
     );
   }
 
-  deleteAssetType(body: number) {
-    this.assetTypeService.deleteAssetType(body).subscribe(
-      (data) => {
-        this.reloadData();
-      },
-      (error) => console.log(error)
-    );
+  assetTypeDelete(value: any) {
+    console.log(value);
+    if (value.action === 'delete') {
+
+      this.assetTypeService.deleteAssetType(value.value).subscribe(
+        (value) => {
+          this.reloadData();
+        },
+        (error) => console.log(error)
+      );
+    }
   }
 
-  assetTypeDetails(assetTypeid: number, action: string) {
-    console.log("sss",assetTypeid);
-    // console.log(action);
-
-    this.router.navigate(['details', assetTypeid, action]);
+  assetTypeDetails(value: any) {
+    if (value.action === 'details') {
+      this.router.navigate(['details', value.value]);
+    }
   }
 
-  assetTypeUpdate(assetTypeid: number) {
-    this.router.navigate(['update', assetTypeid]);
+  assetTypeUpdate(value: any) {
+    if (value.action === 'update') {
+      this.router.navigate(['update', value.value]);
+    }
   }
 }

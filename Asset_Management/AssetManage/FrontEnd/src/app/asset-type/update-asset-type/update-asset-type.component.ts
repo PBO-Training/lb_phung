@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AssetType } from '../../Entity/assetType';
-import { AssetTypeService } from '../../asset-type.service';
+import { AssetTypeService } from '../../service/asset-type.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 //import { FormBuilder } from "@angular/forms";
@@ -11,7 +11,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./update-asset-type.component.css'],
 })
 export class UpdateAssetTypeComponent implements OnInit {
-  assetTypeId: number;
+  assetTypeId: any;
   assetType: AssetType;
   assetTypeForm = new FormGroup({
     assetTypeCode: new FormControl(),
@@ -23,10 +23,11 @@ export class UpdateAssetTypeComponent implements OnInit {
     private assetTypeService: AssetTypeService
   ) {}
 
+
   onSubmit() {
     console.log('value form', this.assetTypeForm.value);
     this.assetType = {
-      assetTypeId: this.assetTypeId,
+      assetTypeId: this.route.snapshot.params.assetTypeId,
       assetTypeCode: this.assetTypeForm.value.assetTypeCode,
       assetTypeName: this.assetTypeForm.value.assetTypeName,
     };
@@ -40,9 +41,13 @@ export class UpdateAssetTypeComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.assetTypeId = this.route.snapshot.params.assetTypeId;
+    this.assetTypeId = {
+      assetTypeId: this.route.snapshot.params.assetTypeId,
+    };
     this.assetTypeService.getAssetTypeId(this.assetTypeId).subscribe(
       (data) => {
+        console.log(data);
+
         this.assetTypeForm.patchValue({
           assetTypeCode: data.assetTypeCode,
           assetTypeName: data.assetTypeName,

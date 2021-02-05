@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AssetType } from './Entity/assetType';
+import { AssetType } from '../entity/assetType';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -27,11 +27,11 @@ export class AssetTypeService {
     return this.http.post<any>(`${this.SearchCodeUrl}`, body);
   }
 
-  deleteAssetType(body: number): Observable<any> {
+  deleteAssetType(body: AssetType): Observable<any> {
     return this.http.post(`${this.deleteUrl}`, body);
   }
-  getAssetTypeId(assetTypeId: number): Observable<any> {
-    return this.http.post(`${this.getIdUrl}`, assetTypeId);
+  getAssetTypeId(body: AssetType): Observable<any> {
+    return this.http.post(`${this.getIdUrl}`, body);
   }
 
   createAssetType(body: AssetType): Observable<any> {
@@ -39,6 +39,6 @@ export class AssetTypeService {
   }
 
   updateAssetType(body: AssetType): Observable<any> {
-    return this.http.post<any>(`${this.updateUrl}`, body);
+    return this.http.post(`${this.updateUrl}`, body);
   }
 } // end
