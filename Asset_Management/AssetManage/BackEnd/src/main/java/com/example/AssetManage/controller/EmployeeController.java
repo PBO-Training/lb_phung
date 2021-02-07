@@ -1,16 +1,20 @@
 package com.example.AssetManage.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.AssetManage.dto.AssetAfterMap;
 import com.example.AssetManage.dto.EmployeeAfterMap;
+import com.example.AssetManage.entity.AssetEntity;
 import com.example.AssetManage.entity.EmployeeEntity;
 import com.example.AssetManage.repository.EmployeeRepository;
 
@@ -41,7 +45,22 @@ public class EmployeeController {
 		EmployeeAfterMap assetTypeMap = new EmployeeAfterMap(assetType);
 		return assetTypeMap;
 	}
-
+	/*
+	 * API Get By Name Employee
+	 */
+	@PostMapping("/searchname")
+	public ResponseEntity<?> searchByName(@RequestBody EmployeeEntity employeeEntity) {
+		List<EmployeeEntity> employ = employeeRepo.searchByName(employeeEntity.getEmployeeId());
+		List<EmployeeAfterMap> listempMap = new ArrayList<EmployeeAfterMap>();
+		for (int i = 0; i < employ.size(); i++) {
+			System.out.println(employ.get(i));
+			EmployeeAfterMap assetMap = new EmployeeAfterMap(employ.get(i));
+			listempMap.add(assetMap);
+		}
+		;
+		// return ResponseEntity.ok(listAssetMap);
+		return new ResponseEntity<List<AssetAfterMap>>(listempMap, HttpStatus.OK);
+	}
 	/*
 	 * API Create Employee
 	 */
