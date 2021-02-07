@@ -5,12 +5,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.support.Repositories;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -55,25 +53,29 @@ public class AssetController {
 	}
 
 	/*
-	 * API Search BY Name AssetEntity
+	 * API Get By Name AssetEntity
 	 */
-	@GetMapping("/searchname/{asset_name}")
-	public ResponseEntity<?> searchByName(@PathVariable("asset_name") String assetName) {
-		List<AssetEntity> asset = assetRepository.searchByName(assetName);
-		List<AssetAfterMap> listassetMap = new ArrayList<AssetAfterMap>();
+	@PostMapping("/searchname")
+	public ResponseEntity<?> searchByName(@RequestBody AssetEntity assetEntity) {
+		List<AssetEntity> asset = assetRepository.searchByName(assetEntity.getAssetName());
+		List<AssetAfterMap> listAssetMap = new ArrayList<AssetAfterMap>();
 		for (int i = 0; i < asset.size(); i++) {
+			System.out.println(asset.get(i));
 			AssetAfterMap assetMap = new AssetAfterMap(asset.get(i));
-			listassetMap.add(assetMap);
+			listAssetMap.add(assetMap);
 		}
-		return ResponseEntity.ok(listassetMap);
+		;
+		// return ResponseEntity.ok(listAssetMap);
+		return new ResponseEntity<List<AssetAfterMap>>(listAssetMap, HttpStatus.OK);
 	}
+
 
 	/*
 	 * API Get By Id AssetEntity
 	 */
-	@RequestMapping(value = "/getid/{asset_id}", method = RequestMethod.GET)
-	public AssetAfterMap getId(@PathVariable("asset_id") long assetId) {
-		AssetEntity asset = assetRepository.getOne(assetId);
+	@RequestMapping(value = "/getid", method = RequestMethod.POST)
+	public AssetAfterMap getId(@RequestBody AssetEntity assetEntity) {
+		AssetEntity asset = assetRepository.getOne(assetEntity.getAssetId());
 		AssetAfterMap assetMap = new AssetAfterMap(asset);
 		return assetMap;
 	}
@@ -101,10 +103,9 @@ public class AssetController {
 	/*
 	 * API Update AssetEntity
 	 */
-	@RequestMapping(value = "/update/{asset_id}", method = RequestMethod.PUT)
-	public ResponseEntity<AssetEntity> updateAsset(@PathVariable(value = "asset_id") Long assetId,
-			@RequestBody AssetEntity assetEntity) {
-		AssetEntity asset = assetRepository.getOne(assetId);
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public ResponseEntity<AssetEntity> updateAsset(@RequestBody AssetEntity assetEntity) {
+		AssetEntity asset = assetRepository.getOne(assetEntity.getAssetId());
 
 		if (asset == null) {
 			return ResponseEntity.notFound().build();
@@ -123,9 +124,9 @@ public class AssetController {
 	/*
 	 * API Delete By Id AssetEntity
 	 */
-	@RequestMapping(value = "/delete/{asset_id}", method = RequestMethod.DELETE)
-	public ResponseEntity<AssetEntity> deleteAsset(@PathVariable(value = "asset_id") Long id) {
-		AssetEntity asset = assetRepository.getOne(id);
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public ResponseEntity<AssetEntity> deleteAsset(@RequestBody AssetEntity assetEntity) {
+		AssetEntity asset = assetRepository.getOne(assetEntity.getAssetId());
 		if (asset == null) {
 			return ResponseEntity.notFound().build();
 		}

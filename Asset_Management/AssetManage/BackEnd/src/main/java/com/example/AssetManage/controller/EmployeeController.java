@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +15,7 @@ import com.example.AssetManage.entity.EmployeeEntity;
 import com.example.AssetManage.repository.EmployeeRepository;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/employee")
 public class EmployeeController {
 	@Autowired
 	EmployeeRepository employeeRepo;
@@ -24,7 +23,7 @@ public class EmployeeController {
 	/*
 	 * API find Employee
 	 */
-	@RequestMapping(value = "/employee", method = RequestMethod.GET)
+	@RequestMapping(value = "/getall", method = RequestMethod.GET)
 	public ResponseEntity<List<EmployeeEntity>> listAllContact() {
 		List<EmployeeEntity> listContact = employeeRepo.findAll();
 		if (listContact.isEmpty()) {
@@ -36,9 +35,9 @@ public class EmployeeController {
 	/*
 	 * API find Employee by id
 	 */
-	@RequestMapping(value = "/employee/{employee_id}", method = RequestMethod.GET)
-	public EmployeeAfterMap findAssetType(@PathVariable("employee_id") long employeeId) {
-		EmployeeEntity assetType = employeeRepo.getOne(employeeId);
+	@RequestMapping(value = "/getid", method = RequestMethod.POST)
+	public EmployeeAfterMap getid(@RequestBody EmployeeEntity employeeEntity) {
+		EmployeeEntity assetType = employeeRepo.getOne(employeeEntity.getEmployeeId());
 		EmployeeAfterMap assetTypeMap = new EmployeeAfterMap(assetType);
 		return assetTypeMap;
 	}
@@ -46,19 +45,19 @@ public class EmployeeController {
 	/*
 	 * API Create Employee
 	 */
-	@RequestMapping(value = "/employee", method = RequestMethod.POST)
-	public EmployeeEntity saveEmployee(@RequestBody EmployeeEntity employeeEntity) {
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	public EmployeeEntity create(@RequestBody EmployeeEntity employeeEntity) {
 		return employeeRepo.save(employeeEntity);
 	}
 
 	/*
 	 * API update EmployeeEntity
 	 */
-	@RequestMapping(value = "/employee/{employee_id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
 
-	public ResponseEntity<EmployeeEntity> updateEmployee(@PathVariable(value = "employee_id") Long employeeId,
-			@RequestBody EmployeeEntity employeeEntity) {
-		EmployeeEntity employee = employeeRepo.getOne(employeeId);
+	public ResponseEntity<EmployeeEntity> update(@RequestBody EmployeeEntity employeeEntity){
+			
+		EmployeeEntity employee = employeeRepo.getOne(employeeEntity.getEmployeeId());
 
 		if (employee == null) {
 			return ResponseEntity.notFound().build();
@@ -71,15 +70,15 @@ public class EmployeeController {
 	}
 
 	/*
-	 * API Delete By Id Employee
+	 * API Delete By Id employee
 	 */
-	@RequestMapping(value = "/employee/{employee_id}", method = RequestMethod.DELETE)
-	public ResponseEntity<EmployeeEntity> deleteAsset(@PathVariable(value = "employee_id") Long employeeid) {
-		EmployeeEntity employee = employeeRepo.getOne(employeeid);
-		if (employee == null) {
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public ResponseEntity<EmployeeEntity> delete(@RequestBody EmployeeEntity employeeEntity) {
+		EmployeeEntity assetType = employeeRepo.getOne(employeeEntity.getEmployeeId());
+		if (assetType == null) {
 			return ResponseEntity.notFound().build();
 		}
-		employeeRepo.delete(employee);
+		employeeRepo.delete(assetType);
 		return ResponseEntity.ok().build();
 	}
 }// end
