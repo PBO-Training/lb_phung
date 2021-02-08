@@ -1,9 +1,9 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h2>AssetType List</h2>
+    <!-- <h2>AssetType List</h2> -->
   </div>
   <div class="panel-body">
-    <app-search (SearchName)="searchByName($event)" (SearchCode)="searchByCode($event)"></app-search>
+    <app-search (SearchName)="searchByName($event)" (buttonValue)="assetTypeUpdate($event)"></app-search>
 
     <app-table [data]="assetTypeTable"
       [columnTitle]="columnTables"
@@ -14,4 +14,5 @@
       (buttonValue)="assetTypeDelete($event)"
       ></app-table>
   </div>
+<button (click)="link()" class="btn btn-info">Create</button>
 </div>

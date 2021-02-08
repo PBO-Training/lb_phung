@@ -1,0 +1,26 @@
+<h2>Create Asset </h2>
+<div style="width: 400px;">
+  <form [formGroup]="assetForm" (ngSubmit)="onSubmit()">
+    <div class="form-Group mb-2">
+      <label for="name">Asset Code</label>
+      <input type="text" class="form-control" formControlName="assetCode">
+    </div>
+    <div class="mb-2">
+      <label for="name">Asset Name</label>
+      <input type="text" class="form-control" formControlName="assetName">
+    </div>
+    <div class="mb-2">
+      <label for="name">Asset Day Exp</label>
+      <input type="text" class="form-control" formControlName="assetDayExp">
+    </div>
+    <div class="mb-2">
+      <label for="name">Asset Price</label>
+      <input type="text" class="form-control" formControlName="assetPrice">
+    </div>
+
+    <button type="submit" class="btn btn-success my-2">Submit
+
+    </button>
+
+  </form>
+</div>

@@ -9,16 +9,15 @@ export class SearchComponent implements OnInit {
   SearchByName = '';
   SearchByCode = '';
 
+
   @Output() SearchName = new EventEmitter<string>();
-  // @Output() SearchCode = new EventEmitter<string>();
+
 
   constructor(private route: ActivatedRoute, private router: Router) {}
   ngOnInit(): void {}
   clickSearch() {
     this.SearchName.emit(this.SearchByName);
     // this.SearchCode.emit(this.SearchByCode);
-    console.log(this.SearchByName);
-
   }
 
 }

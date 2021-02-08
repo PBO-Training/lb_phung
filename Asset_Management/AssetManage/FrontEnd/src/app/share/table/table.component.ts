@@ -1,4 +1,13 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 
 
 @Component({
@@ -19,11 +28,10 @@ export class TableComponent implements OnInit, OnChanges {
 
   constructor() {}
   ngOnChanges(changes: SimpleChanges): void {}
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   onClick(value: string, action: string): void {
     this.buttonValue.emit({ value, action });
   }
+
 }

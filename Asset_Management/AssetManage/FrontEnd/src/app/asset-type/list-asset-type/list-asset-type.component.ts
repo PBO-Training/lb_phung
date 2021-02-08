@@ -15,7 +15,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./list-asset-type.component.css'],
 })
 export class ListAssetTypeComponent implements OnInit, OnChanges {
-
   assetTypeTable: AssetType[];
   assetTypeReq: AssetType;
   columnTables = ['Code', 'Name'];
@@ -76,7 +75,6 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
   assetTypeDelete(value: any) {
     console.log(value);
     if (value.action === 'delete') {
-
       this.assetTypeService.deleteAssetType(value.value).subscribe(
         (value) => {
           this.reloadData();
@@ -88,13 +86,16 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
 
   assetTypeDetails(value: any) {
     if (value.action === 'details') {
-      this.router.navigate(['details', value.value]);
+      this.router.navigate(['detailsAssetType', value.value]);
     }
   }
 
   assetTypeUpdate(value: any) {
     if (value.action === 'update') {
-      this.router.navigate(['update', value.value]);
+      this.router.navigate(['updateAssetType', value.value]);
     }
+  }
+   link() {
+    this.router.navigate(['addAssetType']);
   }
 }

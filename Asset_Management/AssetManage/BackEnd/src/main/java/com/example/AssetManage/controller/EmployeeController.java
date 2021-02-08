@@ -50,7 +50,7 @@ public class EmployeeController {
 	 */
 	@PostMapping("/searchname")
 	public ResponseEntity<?> searchByName(@RequestBody EmployeeEntity employeeEntity) {
-		List<EmployeeEntity> employ = employeeRepo.searchByName(employeeEntity.getEmployeeId());
+		List<EmployeeEntity> employ = employeeRepo.searchByName(employeeEntity.getEmployeeName());
 		List<EmployeeAfterMap> listempMap = new ArrayList<EmployeeAfterMap>();
 		for (int i = 0; i < employ.size(); i++) {
 			System.out.println(employ.get(i));
@@ -59,7 +59,7 @@ public class EmployeeController {
 		}
 		;
 		// return ResponseEntity.ok(listAssetMap);
-		return new ResponseEntity<List<AssetAfterMap>>(listempMap, HttpStatus.OK);
+		return new ResponseEntity<List<EmployeeAfterMap>>(listempMap, HttpStatus.OK);
 	}
 	/*
 	 * API Create Employee
