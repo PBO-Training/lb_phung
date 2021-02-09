@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+<div class="panel panel-primary mb-5">
   <div class="panel-heading">
     <!-- <h2>AssetType List</h2> -->
   </div>
@@ -8,11 +8,11 @@
     <app-table [data]="assetTypeTable"
       [columnTitle]="columnTables"
       [fieldName]="fieldName"
-      [fieldId]="assetTypeId"
+      [fieldId]="assetTypeIdd"
       (buttonValue)="assetTypeDetails($event)"
       (buttonValue)="assetTypeUpdate($event)"
       (buttonValue)="assetTypeDelete($event)"
       ></app-table>
   </div>
-<button (click)="link()" class="btn btn-info">Create</button>
+<button (click)="link()" class="btn btn-info">Add new</button>
 </div>

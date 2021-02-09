@@ -75,6 +75,10 @@ export class ListAssetComponent implements OnInit, OnChanges {
   assetDelete(value: any) {
     console.log(value);
     if (value.action === 'delete') {
+       this.assetReq = {
+         ...this.assetReq,
+         assetId: value,
+       },
       this.assetService.deleteAsset(value.value).subscribe(
         (value) => {
           this.reloadData();

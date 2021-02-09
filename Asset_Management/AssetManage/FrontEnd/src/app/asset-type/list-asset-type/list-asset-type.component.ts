@@ -19,9 +19,11 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
   assetTypeReq: AssetType;
   columnTables = ['Code', 'Name'];
   fieldName = ['assetTypeCode', 'assetTypeName'];
-  assetTypeId = 'assetTypeId';
+   assetTypeIdd = 'assetTypeId';
+  assetTypeId: any;
 
   constructor(
+    private route: ActivatedRoute,
     private assetTypeService: AssetTypeService,
     private router: Router
   ) {}
@@ -75,12 +77,15 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
   assetTypeDelete(value: any) {
     console.log(value);
     if (value.action === 'delete') {
-      this.assetTypeService.deleteAssetType(value.value).subscribe(
-        (value) => {
-          this.reloadData();
-        },
-        (error) => console.log(error)
-      );
+      this.assetTypeId = {
+        assetTypeId: this.route.snapshot.params.assetTypeId
+      },
+        this.assetTypeService.deleteAssetType(value.assetTypeId).subscribe(
+          (value) => {
+            this.reloadData();
+          },
+          (error) => console.log(error)
+        );
     }
   }
 
@@ -95,7 +100,7 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
       this.router.navigate(['updateAssetType', value.value]);
     }
   }
-   link() {
+  link() {
     this.router.navigate(['addAssetType']);
   }
 }
