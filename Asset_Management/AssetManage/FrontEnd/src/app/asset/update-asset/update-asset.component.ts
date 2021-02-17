@@ -14,6 +14,7 @@ export class UpdateAssetComponent implements OnInit {
   assetId: any;
   asset: Asset;
   assetForm = new FormGroup({
+    assetId: new FormControl(),
     assetCode: new FormControl(),
     assetName: new FormControl(),
     assetDayExp: new FormControl(),
@@ -53,6 +54,7 @@ export class UpdateAssetComponent implements OnInit {
         console.log(data);
 
         this.assetForm.patchValue({
+          assetId: data.assetId,
           assetCode: data.assetCode,
           assetName: data.assetName,
           assetDayExp: data.assetDayExp,
