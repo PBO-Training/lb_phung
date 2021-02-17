@@ -19,7 +19,7 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
   assetTypeReq: AssetType;
   columnTables = ['Code', 'Name'];
   fieldName = ['assetTypeCode', 'assetTypeName'];
-   assetTypeIdd = 'assetTypeId';
+  assetTypeIdd = 'assetTypeId';
   assetTypeId: any;
 
   constructor(
@@ -47,8 +47,6 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
   }
 
   searchByName(value: string): void {
-    console.log(this.searchByName);
-
     this.assetTypeReq = {
       ...this.assetTypeReq,
       assetTypeName: value,
@@ -78,14 +76,14 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
     console.log(value);
     if (value.action === 'delete') {
       this.assetTypeId = {
-        assetTypeId: this.route.snapshot.params.assetTypeId
-      },
-        this.assetTypeService.deleteAssetType(value.assetTypeId).subscribe(
-          (value) => {
-            this.reloadData();
-          },
-          (error) => console.log(error)
-        );
+        assetTypeId: this.route.snapshot.params.assetTypeId,
+      };
+      this.assetTypeService.deleteAssetType(value.assetTypeId).subscribe(
+        (value) => {
+          this.reloadData();
+        },
+        (error) => console.log(error)
+      );
     }
   }
 

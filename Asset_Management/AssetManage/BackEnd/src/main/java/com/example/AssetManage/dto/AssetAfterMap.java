@@ -50,7 +50,7 @@ public class AssetAfterMap {
 		this.assetPrice = assetEntity.getAssetPrice();
 		this.assetDayExp = assetEntity.getAssetDayExp();
 		AssetTypeAfterMap assetType = new AssetTypeAfterMap(assetEntity.getAssetType());
-		this.assetTypeMap = assetType;
+		this.assetTypeMap = assetTypeMap;
 
 	}
 
@@ -98,8 +98,8 @@ public class AssetAfterMap {
 		return assetTypeMap;
 	}
 
-	public void setAssetTypeMap(AssetTypeAfterMap assetTypeMap) {
-		this.assetTypeMap = assetTypeMap;
+	public void setAssetTypeMap(AssetTypeAfterMap assetType) {
+		this.assetTypeMap = assetType;
 	}
 
 }// end

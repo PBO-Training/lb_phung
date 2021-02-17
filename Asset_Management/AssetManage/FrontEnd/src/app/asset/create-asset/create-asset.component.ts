@@ -17,6 +17,7 @@ export class CreateAssetComponent implements OnInit {
     assetName: new FormControl(),
     assetDayExp: new FormControl(),
     assetPrice: new FormControl(),
+    assetTypeId: new FormControl(),
   });
 
   constructor(
@@ -30,14 +31,15 @@ export class CreateAssetComponent implements OnInit {
   }
   onSubmit() {
     console.log('value form', this.assetForm.value);
-    this.asset = {
-      assetId: this.assetId,
-      assetCode: this.assetForm.value.assetCode,
-      assetName: this.assetForm.value.assetName,
-      assetDayExp: this.assetForm.value.assetDayExp,
-      assetPrice: this.assetForm.value.assetPrice,
-    };
-    this.assetService.createAsset(this.asset).subscribe(
+    // this.asset = {
+    //   assetId: this.assetId,
+    //   assetCode: this.assetForm.value.assetCode,
+    //   assetName: this.assetForm.value.assetName,
+    //   assetDayExp: this.assetForm.value.assetDayExp,
+    //   assetPrice: this.assetForm.value.assetPrice,
+    //   assetTypeId: this.assetForm.value.assetTypeId,
+    // };
+    this.assetService.createAsset(this.assetForm.value).subscribe(
       (data) => {
         console.log(data);
         this.gotoList();
@@ -46,6 +48,6 @@ export class CreateAssetComponent implements OnInit {
     );}
 
   gotoList() {
-    this.router.navigate(['/listAssets']);
+    this.router.navigate(['/listAsset']);
   }
 }

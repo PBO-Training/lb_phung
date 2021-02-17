@@ -18,6 +18,7 @@ export class UpdateAssetComponent implements OnInit {
     assetName: new FormControl(),
     assetDayExp: new FormControl(),
     assetPrice: new FormControl(),
+    assetTypeId: new FormControl(),
   });
   constructor(
     private route: ActivatedRoute,
@@ -27,14 +28,15 @@ export class UpdateAssetComponent implements OnInit {
 
   onSubmit() {
     console.log('value form', this.assetForm.value);
-    this.asset = {
-      assetId: this.route.snapshot.params.assetId,
-      assetCode: this.assetForm.value.assetCode,
-      assetName: this.assetForm.value.assetName,
-      assetDayExp: this.assetForm.value.assetDayExp,
-      assetPrice: this.assetForm.value.assetPrice,
-    };
-    this.assetService.updateAsset(this.asset).subscribe(
+    // this.asset = {
+    //   assetId: this.route.snapshot.params.assetId,
+    //   assetCode: this.assetForm.value.assetCode,
+    //   assetName: this.assetForm.value.assetName,
+    //   assetDayExp: this.assetForm.value.assetDayExp,
+    //   assetPrice: this.assetForm.value.assetPrice,
+
+    // };
+    this.assetService.updateAsset(this.assetForm.value).subscribe(
       (data) => {
         console.log(data);
         this.gotoList();
@@ -55,6 +57,7 @@ export class UpdateAssetComponent implements OnInit {
           assetName: data.assetName,
           assetDayExp: data.assetDayExp,
           assetPrice: data.assetPrice,
+          assetTypeId: data.assetTypeMap.assetTypeId,
         });
       },
       (error) => console.log(error)

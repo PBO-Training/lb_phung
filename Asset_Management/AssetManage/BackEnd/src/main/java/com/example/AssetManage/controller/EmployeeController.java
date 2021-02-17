@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.AssetManage.dto.AssetAfterMap;
 import com.example.AssetManage.dto.EmployeeAfterMap;
-import com.example.AssetManage.entity.AssetEntity;
 import com.example.AssetManage.entity.EmployeeEntity;
 import com.example.AssetManage.repository.EmployeeRepository;
 
@@ -41,10 +39,11 @@ public class EmployeeController {
 	 */
 	@RequestMapping(value = "/getid", method = RequestMethod.POST)
 	public EmployeeAfterMap getid(@RequestBody EmployeeEntity employeeEntity) {
-		EmployeeEntity assetType = employeeRepo.getOne(employeeEntity.getEmployeeId());
-		EmployeeAfterMap assetTypeMap = new EmployeeAfterMap(assetType);
-		return assetTypeMap;
+		EmployeeEntity employee = employeeRepo.getOne(employeeEntity.getEmployeeId());
+		EmployeeAfterMap employeeMap = new EmployeeAfterMap(employee);
+		return employeeMap;
 	}
+
 	/*
 	 * API Get By Name Employee
 	 */
@@ -54,13 +53,14 @@ public class EmployeeController {
 		List<EmployeeAfterMap> listempMap = new ArrayList<EmployeeAfterMap>();
 		for (int i = 0; i < employ.size(); i++) {
 			System.out.println(employ.get(i));
-			EmployeeAfterMap assetMap = new EmployeeAfterMap(employ.get(i));
-			listempMap.add(assetMap);
+			EmployeeAfterMap employeeMap = new EmployeeAfterMap(employ.get(i));
+			listempMap.add(employeeMap);
 		}
 		;
-		// return ResponseEntity.ok(listAssetMap);
+
 		return new ResponseEntity<List<EmployeeAfterMap>>(listempMap, HttpStatus.OK);
 	}
+
 	/*
 	 * API Create Employee
 	 */
@@ -74,8 +74,8 @@ public class EmployeeController {
 	 */
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 
-	public ResponseEntity<EmployeeEntity> update(@RequestBody EmployeeEntity employeeEntity){
-			
+	public ResponseEntity<EmployeeEntity> update(@RequestBody EmployeeEntity employeeEntity) {
+
 		EmployeeEntity employee = employeeRepo.getOne(employeeEntity.getEmployeeId());
 
 		if (employee == null) {
@@ -93,11 +93,11 @@ public class EmployeeController {
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public ResponseEntity<EmployeeEntity> delete(@RequestBody EmployeeEntity employeeEntity) {
-		EmployeeEntity assetType = employeeRepo.getOne(employeeEntity.getEmployeeId());
-		if (assetType == null) {
+		EmployeeEntity employee = employeeRepo.getOne(employeeEntity.getEmployeeId());
+		if (employee == null) {
 			return ResponseEntity.notFound().build();
 		}
-		employeeRepo.delete(assetType);
+		employeeRepo.delete(employee);
 		return ResponseEntity.ok().build();
 	}
 }// end

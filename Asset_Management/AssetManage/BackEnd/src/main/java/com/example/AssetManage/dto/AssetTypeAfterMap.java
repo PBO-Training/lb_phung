@@ -22,7 +22,6 @@ public class AssetTypeAfterMap {
 
 	public AssetTypeAfterMap(AssetTypeEntity assetTypeEntity) {
 
-		super();
 		this.assetTypeId = assetTypeEntity.getAssetTypeId();
 		this.assetTypeCode = assetTypeEntity.getAssetTypeCode();
 		this.assetTypeName = assetTypeEntity.getAssetTypeName();
