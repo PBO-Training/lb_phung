@@ -29,15 +29,17 @@ export class UpdateAssetComponent implements OnInit {
 
   onSubmit() {
     console.log('value form', this.assetForm.value);
-    // this.asset = {
-    //   assetId: this.route.snapshot.params.assetId,
-    //   assetCode: this.assetForm.value.assetCode,
-    //   assetName: this.assetForm.value.assetName,
-    //   assetDayExp: this.assetForm.value.assetDayExp,
-    //   assetPrice: this.assetForm.value.assetPrice,
-
-    // };
-    this.assetService.updateAsset(this.assetForm.value).subscribe(
+    this.asset = {
+      assetId: this.route.snapshot.params.assetId,
+      assetCode: this.assetForm.value.assetCode,
+      assetName: this.assetForm.value.assetName,
+      assetDayExp: this.assetForm.value.assetDayExp,
+      assetPrice: this.assetForm.value.assetPrice,
+      assetType: {
+        assetTypeId: this.assetForm.value.assetTypeId,
+      },
+    };
+    this.assetService.updateAsset(this.asset).subscribe(
       (data) => {
         console.log(data);
         this.gotoList();

@@ -20,6 +20,7 @@ export class ListAssetComponent implements OnInit, OnChanges {
   columnTables = ['Code', 'Name', 'DayExp', 'Price'];
   fieldName = ['assetCode', 'assetName', 'assetDayExp', 'assetPrice'];
   assetId = 'assetId';
+  asset:any;
 
   constructor(
     private assetService: AssetService,
@@ -75,11 +76,10 @@ export class ListAssetComponent implements OnInit, OnChanges {
   assetDelete(value: any) {
     console.log(value);
     if (value.action === 'delete') {
-       this.assetReq = {
-         ...this.assetReq,
-         assetId: value,
-       },
-      this.assetService.deleteAsset(value.value).subscribe(
+      this.asset = {
+        assetId: value.value,
+      };
+      this.assetService.deleteAsset(this.asset).subscribe(
         (value) => {
           this.reloadData();
         },

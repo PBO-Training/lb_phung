@@ -1,0 +1,61 @@
+
+<mat-sidenav-container fullscreen class="sidenav-container" autosize>
+<mat-sidenav  class="sidenav" mode="side" opened="true" (mouseenter)="mouseenter()"
+  (mouseleave)="mouseleave()">
+  <mat-nav-list>
+    <mat-list-item class="parent justify-content-center">
+      <span routerLink="listAssetTypes" class="full-width" *ngIf="isExpanded || isShowing">ASSET</span>
+      <mat-icon mat-list-icon>face</mat-icon>
+    </mat-list-item>
+  </mat-nav-list>
+  <hr class="sidebar-divider my-0">
+  <mat-nav-list>
+    <mat-list-item class="parent">
+      <span routerLink="listAssetTypes" class="full-width" *ngIf="isExpanded || isShowing">Home</span>
+      <mat-icon mat-list-icon>home</mat-icon>
+
+    </mat-list-item>
+    <hr class="sidebar-divider my-0">
+    <mat-list-item class="parent" (click)="showSubmenu = !showSubmenu">
+      <span routerLink="listAsset" class="full-width" *ngIf="isExpanded || isShowing">Asset</span>
+      <mat-icon mat-list-icon>dashboard</mat-icon>
+    </mat-list-item>
+    <hr class="sidebar-divider my-0">
+    <mat-list-item class="parent">
+      <span routerLink="listAssetTypes" class="full-width" *ngIf="isExpanded || isShowing">Asset Type</span>
+      <mat-icon mat-list-icon>dashboard</mat-icon>
+    </mat-list-item>
+    <hr class="sidebar-divider my-0">
+    <mat-list-item class="parent">
+      <span routerLink="listEmployee" class="full-width" *ngIf="isExpanded || isShowing">Employee</span>
+      <mat-icon mat-list-icon>dashboard</mat-icon>
+    </mat-list-item>
+    <hr class="sidebar-divider my-0">
+  </mat-nav-list>
+
+</mat-sidenav>
+
+<mat-toolbar class="toolbar">
+  <button mat-icon-button (click)="isExpanded = !isExpanded">
+    <mat-icon>subject</mat-icon>
+  </button>
+  <h1 class="name">{{head}}</h1>
+</mat-toolbar>
+<div class="sidenav-content">
+
+  <div class="container">
+
+    <div class="card">
+      <div class="card-body">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer mb-0 bg-info">
+    <div class="container my-1">
+      <span>Asset_Management</span>
+    </div>
+  </footer>
+</div>
+</mat-sidenav-container>

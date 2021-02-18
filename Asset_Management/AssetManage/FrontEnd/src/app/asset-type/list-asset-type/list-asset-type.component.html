@@ -3,12 +3,13 @@
     <!-- <h2>AssetType List</h2> -->
   </div>
   <div class="panel-body">
+
     <app-search (SearchName)="searchByName($event)" (buttonValue)="assetTypeUpdate($event)"></app-search>
 
     <app-table [data]="assetTypeTable"
       [columnTitle]="columnTables"
       [fieldName]="fieldName"
-      [fieldId]="assetTypeIdd"
+      [fieldId]="assetTypeId"
       (buttonValue)="assetTypeDetails($event)"
       (buttonValue)="assetTypeUpdate($event)"
       (buttonValue)="assetTypeDelete($event)"

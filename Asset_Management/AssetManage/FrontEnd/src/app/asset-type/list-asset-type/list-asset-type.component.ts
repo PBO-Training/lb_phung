@@ -4,6 +4,7 @@ import {
   OnInit,
   Output,
   SimpleChanges,
+  EventEmitter,
 } from '@angular/core';
 import { AssetType } from '../../Entity/assetType';
 import { AssetTypeService } from '../../service/asset-type.service';
@@ -19,8 +20,9 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
   assetTypeReq: AssetType;
   columnTables = ['Code', 'Name'];
   fieldName = ['assetTypeCode', 'assetTypeName'];
-  assetTypeIdd = 'assetTypeId';
-  assetTypeId: any;
+  assetTypeId = 'assetTypeId';
+  assetType: any;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -75,10 +77,10 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
   assetTypeDelete(value: any) {
     console.log(value);
     if (value.action === 'delete') {
-      this.assetTypeId = {
-        assetTypeId: this.route.snapshot.params.assetTypeId,
+      this.assetType = {
+        assetTypeId: value.value,
       };
-      this.assetTypeService.deleteAssetType(value.assetTypeId).subscribe(
+      this.assetTypeService.deleteAssetType(this.assetType).subscribe(
         (value) => {
           this.reloadData();
         },

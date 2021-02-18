@@ -23,7 +23,7 @@ export class DetailAssetTypeComponent implements OnInit {
     private router: Router,
     private assetTypeService: AssetTypeService
   ) {}
-
+// get id asset type id
   ngOnInit(): void {
     this.assetTypeId = {
      assetTypeId : this.route.snapshot.params.assetTypeId
@@ -38,7 +38,7 @@ export class DetailAssetTypeComponent implements OnInit {
       (error) => console.log(error)
     );
   }
-
+// go to list-assetType component
   list() {
     this.router.navigate(['listAssetTypes']);
   }
