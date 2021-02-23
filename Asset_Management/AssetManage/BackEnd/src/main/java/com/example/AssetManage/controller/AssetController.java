@@ -41,7 +41,7 @@ public class AssetController {
 	 */
 	@RequestMapping(value = "/getall", method = RequestMethod.GET)
 	public ResponseEntity<List<AssetAfterMap>> getAll() {
-		List<AssetEntity> listAssetEntity = assetRepository.getAll();
+		List<AssetEntity> listAssetEntity = assetRepository.findAll();
 		List<AssetAfterMap> listAssetAfterMap = listAssetEntity.stream().map(AssetAfterMap::new)
 				.collect(Collectors.toList());
 
@@ -63,10 +63,12 @@ public class AssetController {
 			System.out.println(asset.get(i));
 			AssetAfterMap assetMap = new AssetAfterMap(asset.get(i));
 			listAssetMap.add(assetMap);
-		};
+		}
+		;
 		// return ResponseEntity.ok(listAssetMap);
 		return new ResponseEntity<List<AssetAfterMap>>(listAssetMap, HttpStatus.OK);
 	}
+
 
 	/*
 	 * API Get By Id AssetEntity
@@ -124,7 +126,12 @@ public class AssetController {
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public ResponseEntity<AssetEntity> deleteAsset(@RequestBody AssetEntity assetEntity) {
-		assetRepository.delete(assetEntity.getAssetId());
+		AssetEntity asset = assetRepository.getOne(assetEntity.getAssetId());
+		if (asset == null) {
+			return ResponseEntity.notFound().build();
+		}
+
+		assetRepository.delete(asset);
 		return ResponseEntity.ok().build();
 	}
 }// end

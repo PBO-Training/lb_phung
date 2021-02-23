@@ -20,7 +20,7 @@ export class ListAssetComponent implements OnInit, OnChanges {
   columnTables = ['Code', 'Name', 'DayExp', 'Price'];
   fieldName = ['assetCode', 'assetName', 'assetDayExp', 'assetPrice'];
   assetId = 'assetId';
-  asset: any;
+  asset:any;
 
   constructor(
     private assetService: AssetService,

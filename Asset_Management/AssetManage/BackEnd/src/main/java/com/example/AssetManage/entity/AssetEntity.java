@@ -43,10 +43,6 @@ public class AssetEntity {
 	/**
 	 * id of AssetType
 	 */
-	
-	private int use;
-	private int doNotUse;
-	
 	@ManyToOne
 	@JoinColumn(name = "asset_type_id")
 	private AssetTypeEntity assetType;
@@ -155,24 +151,8 @@ public class AssetEntity {
 	public void setUpdateBy(int updateBy) {
 		this.updateBy = updateBy;
 	}
-	
-	
 
-	public int getUse() {
-		return use;
-	}
 
-	public void setUse(int use) {
-		this.use = use;
-	}
-
-	public int getDoNotUse() {
-		return doNotUse;
-	}
-
-	public void setDoNotUse(int doNotUse) {
-		this.doNotUse = doNotUse;
-	}
 
 	public LocalDate getCreateDate() {
 		return createDate;
@@ -197,7 +177,5 @@ public class AssetEntity {
 	public void setAssetType(AssetTypeEntity assetType) {
 		this.assetType = assetType;
 	}
-	
-
 
 }
