@@ -4,7 +4,8 @@ export interface Asset {
   assetName: string;
   assetPrice: string;
   assetDayExp: Date;
+  used: number;
+  doNotUse: number;
+
   assetType: Object;
-
-
 }

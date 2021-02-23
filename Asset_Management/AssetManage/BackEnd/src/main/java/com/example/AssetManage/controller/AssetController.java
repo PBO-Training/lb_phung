@@ -91,7 +91,8 @@ public class AssetController {
 		asset.setAssetName(assetDto.getAssetName());
 		asset.setAssetPrice(assetDto.getAssetPrice());
 		asset.setAssetDayExp(assetDto.getAssetDayExp());
-
+		asset.setDoNotUse(assetDto.getDoNotUse());
+		asset.setUsed(assetDto.getUsed());
 		AssetTypeEntity assetType = assetTypeRepository.getOne(assetDto.assetTypeId);
 		asset.setAssetType(assetType);
 		assetRepository.save(asset);
@@ -113,10 +114,12 @@ public class AssetController {
 		asset.setAssetName(assetEntity.getAssetName());
 		asset.setAssetPrice(assetEntity.getAssetPrice());
 		asset.setAssetDayExp(assetEntity.getAssetDayExp());
+		asset.setUsed(assetEntity.getUsed());
+		asset.setDoNotUse(assetEntity.getDoNotUse());		
 		asset.setAssetType(assetEntity.getAssetType());
 
 		AssetEntity updateAsset = assetRepository.save(asset);
-		return ResponseEntity.ok(updateAsset);
+		return ResponseEntity.ok().build();
 	}
 
 	/*

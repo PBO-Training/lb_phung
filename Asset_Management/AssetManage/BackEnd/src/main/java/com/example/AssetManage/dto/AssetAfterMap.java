@@ -39,7 +39,7 @@ public class AssetAfterMap {
 	/**
 	 * id of AssetType
 	 */
-private int use;
+private int used;
 private int doNotUse;
 	private AssetTypeAfterMap assetTypeMap;
 
@@ -50,7 +50,7 @@ private int doNotUse;
 		this.assetName = assetEntity.getAssetName();
 		this.assetPrice = assetEntity.getAssetPrice();
 		this.assetDayExp = assetEntity.getAssetDayExp();
-		this.use = assetEntity.getUse();
+		this.used = assetEntity.getUsed();
 		this.doNotUse = assetEntity.getDoNotUse();
 		AssetTypeAfterMap assetType = new AssetTypeAfterMap(assetEntity.getAssetType());
 		this.assetTypeMap = assetType;
@@ -105,12 +105,14 @@ private int doNotUse;
 		this.assetTypeMap = assetType;
 	}
 
-	public int getUse() {
-		return use;
+	
+
+	public int getUsed() {
+		return used;
 	}
 
-	public void setUse(int use) {
-		this.use = use;
+	public void setUsed(int used) {
+		this.used = used;
 	}
 
 	public int getDoNotUse() {
@@ -120,5 +122,7 @@ private int doNotUse;
 	public void setDoNotUse(int doNotUse) {
 		this.doNotUse = doNotUse;
 	}
+
+	
 
 }// end

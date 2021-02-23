@@ -8,8 +8,7 @@ public class AssetDto {
 	public String assetPrice;
 	public Date assetDayExp;
 	public long assetTypeId;
-	public int use;
-	
+	public int used;	
 	public int doNotUse;
 	
 
@@ -53,12 +52,13 @@ public class AssetDto {
 	public void setAssetTypeId(long assetTypeId) {
 		this.assetTypeId = assetTypeId;
 	}
-	public int getUse() {
-		return use;
+	
+	public int getUsed() {
+		return used;
 	}
 
-	public void setUse(int use) {
-		this.use = use;
+	public void setUsed(int used) {
+		this.used = used;
 	}
 
 	public int getDoNotUse() {

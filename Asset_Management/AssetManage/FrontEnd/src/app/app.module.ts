@@ -25,7 +25,7 @@ import { NavBarComponent } from './share/nav-bar/nav-bar.component';
 import { TableComponent } from './share/table/table.component';
 import { SearchComponent } from './share/search/search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgSelectModule } from '@ng-select/ng-select';
+
 
 
 @NgModule({
@@ -46,7 +46,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     NavBarComponent,
     TableComponent,
     SearchComponent,
-    NgSelectModule,
+
 
   ],
   imports: [

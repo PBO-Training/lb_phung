@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.AssetManage.dto.AssetAfterMap;
 import com.example.AssetManage.dto.EmployeeAfterMap;
-import com.example.AssetManage.entity.AssetEntity;
-import com.example.AssetManage.entity.AssetTypeEntity;
 import com.example.AssetManage.entity.EmployeeEntity;
 import com.example.AssetManage.repository.EmployeeRepository;
 
@@ -95,7 +92,7 @@ public class EmployeeController {
 		employee.setEmployeeCode(employeeEntity.getEmployeeCode());
 		employee.setEmployeeName(employeeEntity.getEmployeeName());
 		EmployeeEntity updateEmployee = employeeRepo.save(employee);
-		return ResponseEntity.ok(updateEmployee);
+		return ResponseEntity.ok().build();
 	}
 
 	/*

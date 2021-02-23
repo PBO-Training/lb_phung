@@ -19,6 +19,8 @@ export class UpdateAssetComponent implements OnInit {
     assetName: new FormControl(),
     assetDayExp: new FormControl(),
     assetPrice: new FormControl(),
+    used: new FormControl(),
+    doNotUse: new FormControl(),
     assetTypeId: new FormControl(),
   });
   constructor(
@@ -35,6 +37,8 @@ export class UpdateAssetComponent implements OnInit {
       assetName: this.assetForm.value.assetName,
       assetDayExp: this.assetForm.value.assetDayExp,
       assetPrice: this.assetForm.value.assetPrice,
+      used: this. assetForm.value.used,
+      doNotUse: this. assetForm.value.doNotUse,
       assetType: {
         assetTypeId: this.assetForm.value.assetTypeId,
       },
@@ -61,6 +65,8 @@ export class UpdateAssetComponent implements OnInit {
           assetName: data.assetName,
           assetDayExp: data.assetDayExp,
           assetPrice: data.assetPrice,
+          used: data.used,
+          doNotUse: data.doNotUse,
           assetTypeId: data.assetTypeMap.assetTypeId,
         });
       },

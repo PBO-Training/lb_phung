@@ -44,7 +44,7 @@ public class AssetEntity {
 	 * id of AssetType
 	 */
 	
-	private int use;
+	private int used;
 	private int doNotUse;
 	
 	@ManyToOne
@@ -154,16 +154,15 @@ public class AssetEntity {
 
 	public void setUpdateBy(int updateBy) {
 		this.updateBy = updateBy;
-	}
-	
-	
+	}	
 
-	public int getUse() {
-		return use;
+	
+	public int getUsed() {
+		return used;
 	}
 
-	public void setUse(int use) {
-		this.use = use;
+	public void setUsed(int used) {
+		this.used = used;
 	}
 
 	public int getDoNotUse() {

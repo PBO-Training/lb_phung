@@ -10,7 +10,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./create-asset.component.css'],
 })
 export class CreateAssetComponent implements OnInit {
-   assetId: number;
+  assetId: number;
   asset: Asset;
   submitted = false;
   assetForm = new FormGroup({
@@ -18,13 +18,12 @@ export class CreateAssetComponent implements OnInit {
     assetName: new FormControl(),
     assetDayExp: new FormControl(),
     assetPrice: new FormControl(),
+    used: new FormControl(),
+    doNotUse: new FormControl(),
     assetTypeId: new FormControl(),
   });
 
-  constructor(
-    private assetService: AssetService,
-    private router: Router
-  ) {}
+  constructor(private assetService: AssetService, private router: Router) {}
 
   ngOnInit(): void {}
   newAsset(): void {
@@ -46,7 +45,8 @@ export class CreateAssetComponent implements OnInit {
         this.gotoList();
       },
       (error) => console.log(error)
-    );}
+    );
+  }
 
   gotoList() {
     this.router.navigate(['/listAsset']);
