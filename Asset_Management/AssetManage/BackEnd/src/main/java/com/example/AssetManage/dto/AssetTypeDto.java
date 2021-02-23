@@ -2,10 +2,8 @@ package com.example.AssetManage.dto;
 
 import java.sql.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
-
 import com.example.AssetManage.entity.AssetEntity;
 
 
@@ -14,7 +12,6 @@ public class AssetTypeDto {
 	private Long assetTypeId;
 
 	private String assetTypeCode;
-
 
 	private String assetTypeName;
 

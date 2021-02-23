@@ -2,6 +2,7 @@ package com.example.AssetManage.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.AssetManage.dto.AssetAfterMap;
 import com.example.AssetManage.dto.EmployeeAfterMap;
+import com.example.AssetManage.entity.AssetEntity;
+import com.example.AssetManage.entity.AssetTypeEntity;
 import com.example.AssetManage.entity.EmployeeEntity;
 import com.example.AssetManage.repository.EmployeeRepository;
 
@@ -28,12 +32,16 @@ public class EmployeeController {
 	 * API find Employee
 	 */
 	@RequestMapping(value = "/getall", method = RequestMethod.GET)
-	public ResponseEntity<List<EmployeeEntity>> listAllContact() {
-		List<EmployeeEntity> listContact = employeeRepo.findAll();
-		if (listContact.isEmpty()) {
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
+	public ResponseEntity<List<EmployeeAfterMap>> getAll() {
+		List<EmployeeEntity> listEmployeeEntity = employeeRepo.getAll();
+		List<EmployeeAfterMap> listEmployeeAfterMap = listEmployeeEntity.stream().map(EmployeeAfterMap::new)
+				.collect(Collectors.toList());
+
+		if (listEmployeeAfterMap.isEmpty()) {
+			return new ResponseEntity<List<EmployeeAfterMap>>(HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<List<EmployeeEntity>>(listContact, HttpStatus.OK);
+
+		return new ResponseEntity<List<EmployeeAfterMap>>(listEmployeeAfterMap, HttpStatus.OK);
 	}
 
 	/*
@@ -95,11 +103,8 @@ public class EmployeeController {
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public ResponseEntity<EmployeeEntity> delete(@RequestBody EmployeeEntity employeeEntity) {
-		EmployeeEntity employee = employeeRepo.getOne(employeeEntity.getEmployeeId());
-		if (employee == null) {
-			return ResponseEntity.notFound().build();
-		}
-		employeeRepo.delete(employee);
+		employeeRepo.delete(employeeEntity.getEmployeeId());
+			
 		return ResponseEntity.ok().build();
 	}
 }// end

@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Asset } from '../../Entity/asset';
 import { AssetService } from '../../service/asset.service';
 import { ActivatedRoute, Router } from '@angular/router';
