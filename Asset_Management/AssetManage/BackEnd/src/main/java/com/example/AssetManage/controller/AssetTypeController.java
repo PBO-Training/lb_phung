@@ -29,7 +29,7 @@ public class AssetTypeController {
 	 */
 	@RequestMapping(value = "/getall", method = RequestMethod.GET)
 	public ResponseEntity<List<AssetTypeAfterMap>> getAll() {
-		List<AssetTypeEntity> listAssetEntity = assetTypeRepository.findAll();
+		List<AssetTypeEntity> listAssetEntity = assetTypeRepository.getAll();
 		List<AssetTypeAfterMap> listAssetAfterMap = listAssetEntity.stream().map(AssetTypeAfterMap::new)
 				.collect(Collectors.toList());
 		if (listAssetAfterMap.isEmpty()) {
@@ -113,11 +113,9 @@ public class AssetTypeController {
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public ResponseEntity<AssetTypeEntity> delete(@RequestBody AssetTypeEntity assetTypeEntity) {
-		AssetTypeEntity assetType = assetTypeRepository.getOne(assetTypeEntity.getAssetTypeId());
-		if (assetType == null) {
-			return ResponseEntity.notFound().build();
-		}
-		assetTypeRepository.delete(assetType);
+		 assetTypeRepository.delete(assetTypeEntity.getAssetTypeId());
+		
+		
 		return ResponseEntity.ok().build();
 	}
 }// end
