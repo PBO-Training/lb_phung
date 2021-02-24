@@ -44,7 +44,10 @@ public class AssetEmployeeController {
 
 		return new ResponseEntity<List<AssetEmployeeAfterMap>>(listAssetEmployeeAfterMap, HttpStatus.OK);
 	}
-
+	
+	
+	
+	
 //	/*
 //	 * API Get By Name AssetEntity
 //	 */

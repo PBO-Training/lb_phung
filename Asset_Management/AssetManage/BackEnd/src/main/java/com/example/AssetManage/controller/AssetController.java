@@ -115,7 +115,7 @@ public class AssetController {
 		asset.setAssetPrice(assetEntity.getAssetPrice());
 		asset.setAssetDayExp(assetEntity.getAssetDayExp());
 		asset.setUsed(assetEntity.getUsed());
-		asset.setDoNotUse(assetEntity.getDoNotUse());		
+		asset.setDoNotUse(assetEntity.getDoNotUse());
 		asset.setAssetType(assetEntity.getAssetType());
 
 		AssetEntity updateAsset = assetRepository.save(asset);

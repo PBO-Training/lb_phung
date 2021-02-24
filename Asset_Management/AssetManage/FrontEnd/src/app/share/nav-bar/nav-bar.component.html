@@ -10,24 +10,24 @@
   </mat-nav-list>
   <hr class="sidebar-divider my-0">
   <mat-nav-list>
-    <mat-list-item class="parent">
-      <span routerLink="listAssetTypes" class="full-width" *ngIf="isExpanded || isShowing">Home</span>
+    <mat-list-item class="parent  nav-link" routerLink="">
+      <span class="full-width" *ngIf="isExpanded || isShowing">Home</span>
       <mat-icon mat-list-icon>home</mat-icon>
 
     </mat-list-item>
     <hr class="sidebar-divider my-0">
-    <mat-list-item class="parent" (click)="showSubmenu = !showSubmenu">
-      <span routerLink="listAsset" class="full-width" *ngIf="isExpanded || isShowing">Asset</span>
+    <mat-list-item class="parent  nav-link" routerLink="listAsset">
+      <span  class="full-width"  *ngIf="isExpanded || isShowing">Asset</span>
       <mat-icon mat-list-icon>dashboard</mat-icon>
     </mat-list-item>
     <hr class="sidebar-divider my-0">
-    <mat-list-item class="parent">
-      <span routerLink="listAssetTypes" class="full-width" *ngIf="isExpanded || isShowing">Asset Type</span>
+    <mat-list-item class="parent  nav-link" routerLink="listAssetTypes">
+      <span class="full-width" *ngIf="isExpanded || isShowing">Asset Type</span>
       <mat-icon mat-list-icon>dashboard</mat-icon>
     </mat-list-item>
     <hr class="sidebar-divider my-0">
-    <mat-list-item class="parent">
-      <span routerLink="listEmployee" class="full-width" *ngIf="isExpanded || isShowing">Employee</span>
+    <mat-list-item class="parent  nav-link" routerLink="listEmployee">
+      <span class="full-width" *ngIf="isExpanded || isShowing">Employee</span>
       <mat-icon mat-list-icon>dashboard</mat-icon>
     </mat-list-item>
     <hr class="sidebar-divider my-0">

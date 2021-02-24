@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AssetService } from '../../service/asset.service';
 import { Asset } from '../../Entity/asset';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ export class CreateAssetComponent implements OnInit {
   asset: Asset;
   submitted = false;
   assetForm = new FormGroup({
+    assetId: new FormControl(),
     assetCode: new FormControl(),
     assetName: new FormControl(),
     assetDayExp: new FormControl(),
@@ -22,7 +23,7 @@ export class CreateAssetComponent implements OnInit {
     doNotUse: new FormControl(),
     assetTypeId: new FormControl(),
   });
-
+  // @Input() fieldName: [];
   constructor(private assetService: AssetService, private router: Router) {}
 
   ngOnInit(): void {}

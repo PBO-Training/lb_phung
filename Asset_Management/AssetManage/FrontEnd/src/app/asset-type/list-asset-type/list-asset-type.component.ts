@@ -22,8 +22,6 @@ export class ListAssetTypeComponent implements OnInit, OnChanges {
   fieldName = ['assetTypeCode', 'assetTypeName'];
   assetTypeId = 'assetTypeId';
   assetType: any;
-
-
   constructor(
     private route: ActivatedRoute,
     private assetTypeService: AssetTypeService,

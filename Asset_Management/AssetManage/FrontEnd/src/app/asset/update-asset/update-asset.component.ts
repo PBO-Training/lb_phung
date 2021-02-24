@@ -13,6 +13,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class UpdateAssetComponent implements OnInit {
   assetId: any;
   asset: Asset;
+  // assetTypeId: any[]=[];
   assetForm = new FormGroup({
     assetId: new FormControl(),
     assetCode: new FormControl(),
@@ -37,8 +38,8 @@ export class UpdateAssetComponent implements OnInit {
       assetName: this.assetForm.value.assetName,
       assetDayExp: this.assetForm.value.assetDayExp,
       assetPrice: this.assetForm.value.assetPrice,
-      used: this. assetForm.value.used,
-      doNotUse: this. assetForm.value.doNotUse,
+      used: this.assetForm.value.used,
+      doNotUse: this.assetForm.value.doNotUse,
       assetType: {
         assetTypeId: this.assetForm.value.assetTypeId,
       },
