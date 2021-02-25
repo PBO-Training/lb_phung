@@ -19,7 +19,7 @@ public class AssetEmployeeEntity implements Serializable {
 	 */
 	private static long serialVersionUID = 1L;
 	/**
-	 * ID of Asset
+	 * ID of asset
 	 */
 	@Id
 	@ManyToOne

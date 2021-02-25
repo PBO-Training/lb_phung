@@ -22,7 +22,6 @@ Folder project -> Select all Service folder -> Right click -> Maven -> Update Pr
 
 Running the application locally
 Project includes:
-
 Entity
 Controler
 Dto
