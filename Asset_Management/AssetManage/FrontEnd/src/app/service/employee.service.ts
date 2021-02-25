@@ -8,13 +8,13 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class EmployeeService {
-  private getAllUrl = 'http://localhost:8080/api/employee/getall';
-  private getIdUrl = 'http://localhost:8080/api/employee/getid';
-  private updateUrl = 'http://localhost:8080/api/employee/update';
-  private SearchNameUrl = 'http://localhost:8080/api/employee/searchname';
-  private SearchCodeUrl = 'http://localhost:8080/api/employee/searchcode';
-  private deleteUrl = 'http://localhost:8080/api/employee/delete';
-  private createUrl = 'http://localhost:8080/api/employee/create';
+  private getAllUrl = 'http://192.168.20.115:8080/api/employee/getall';
+  private getIdUrl = 'http://192.168.20.115:8080/api/employee/getid';
+  private updateUrl = 'http://192.168.20.115:8080/api/employee/update';
+  private SearchNameUrl = 'http://192.168.20.115:8080/api/employee/searchname';
+  private SearchCodeUrl = 'http://192.168.20.115:8080/api/employee/searchcode';
+  private deleteUrl = 'http://192.168.20.115:8080/api/employee/delete';
+  private createUrl = 'http://192.168.20.115:8080/api/employee/create';
 
   constructor(private http: HttpClient) {}
   getEmployeeList(): Observable<any> {

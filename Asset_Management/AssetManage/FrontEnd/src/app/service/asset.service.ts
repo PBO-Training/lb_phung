@@ -8,13 +8,13 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AssetService {
-  private getAllUrl = 'http://localhost:8080/api/asset/getall';
-  private getIdUrl = 'http://localhost:8080/api/asset/getid';
-  private updateUrl = 'http://localhost:8080/api/asset/update';
-  private SearchNameUrl = 'http://localhost:8080/api/asset/searchname';
-  private SearchCodeUrl = 'http://localhost:8080/api/asset/searchcode';
-  private deleteUrl = 'http://localhost:8080/api/asset/delete';
-  private createUrl = 'http://localhost:8080/api/asset/create';
+  private getAllUrl = 'http://192.168.20.115:8080/api/asset/getall';
+  private getIdUrl = 'http://192.168.20.115:8080/api/asset/getid';
+  private updateUrl = 'http://192.168.20.115:8080/api/asset/update';
+  private SearchNameUrl = 'http://192.168.20.115:8080/api/asset/searchname';
+  private SearchCodeUrl = 'http://192.168.20.115:8080/api/asset/searchcode';
+  private deleteUrl = 'http://192.168.20.115:8080/api/asset/delete';
+  private createUrl = 'http://192.168.20.115:8080/api/asset/create';
 
   constructor(private http: HttpClient) {}
   getAssetList(): Observable<any> {
