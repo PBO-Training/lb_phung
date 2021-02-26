@@ -4,13 +4,13 @@
   (mouseleave)="mouseleave()">
   <mat-nav-list>
     <mat-list-item class="parent justify-content-center">
-      <span routerLink="listAssetTypes" class="full-width" *ngIf="isExpanded || isShowing">ASSET</span>
+      <span routerLink="listAsset" class="full-width" *ngIf="isExpanded || isShowing">ASSET</span>
       <mat-icon mat-list-icon>face</mat-icon>
     </mat-list-item>
   </mat-nav-list>
   <hr class="sidebar-divider my-0">
   <mat-nav-list>
-    <mat-list-item class="parent  nav-link" routerLink="">
+    <mat-list-item class="parent  nav-link" routerLink="listAsset">
       <span class="full-width" *ngIf="isExpanded || isShowing">Home</span>
       <mat-icon mat-list-icon>home</mat-icon>
 
