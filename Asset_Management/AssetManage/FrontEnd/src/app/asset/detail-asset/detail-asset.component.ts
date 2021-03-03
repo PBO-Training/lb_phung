@@ -12,12 +12,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class DetailAssetComponent implements OnInit {
   assetId: any;
   asset: Asset;
-  assetForm = new FormGroup({
-    assetCode: new FormControl(),
-    assetName: new FormControl(),
-    assetDayExp: new FormControl(),
-    assetPrice: new FormControl(),
-  });
+  assetTable: Asset[];
+  columnTables = ['asset Name', 'employee Name', 'Date Range'];
+  fieldName = ['assetName', 'employeeName', 'assetEmployeDateRange'];
 
   constructor(
     private route: ActivatedRoute,
@@ -29,14 +26,9 @@ export class DetailAssetComponent implements OnInit {
     this.assetId = {
       assetId: this.route.snapshot.params.assetId,
     };
-    this.assetService.getAssetId(this.assetId).subscribe(
+    this.assetService.assetInfo(this.assetId).subscribe(
       (data) => {
-        this.assetForm.patchValue({
-          assetCode: data.assetCode,
-          assetName: data.assetName,
-          assetDayExp: data.assetDayExp,
-          assetPrice: data.assetPrice,
-        });
+        this.assetTable = data;
       },
       (error) => console.log(error)
     );

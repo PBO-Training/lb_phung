@@ -39,8 +39,8 @@ public class AssetAfterMap {
 	/**
 	 * id of AssetType
 	 */
-private int used;
-private int doNotUse;
+	private int used;
+	private int doNotUse;
 	private AssetTypeAfterMap assetTypeMap;
 
 	public AssetAfterMap(AssetEntity assetEntity) {
@@ -105,8 +105,6 @@ private int doNotUse;
 		this.assetTypeMap = assetType;
 	}
 
-	
-
 	public int getUsed() {
 		return used;
 	}
@@ -122,7 +120,5 @@ private int doNotUse;
 	public void setDoNotUse(int doNotUse) {
 		this.doNotUse = doNotUse;
 	}
-
-	
 
 }// end

@@ -1,21 +1,9 @@
 <h2>Asset Details</h2>
 
 <hr />
-<form [formGroup]="assetForm">
-  <div class="form-Group">
-    <label for="name">Asset Code: </label> <b> {{assetForm.value.assetCode}}</b>
-  </div>
-  <div>
-    <label for="name">Asset Name: </label> <b> {{assetForm?.value.assetName}}</b>
-  </div>
-  <div>
-    <label for="name">Asset Day EXP: </label> <b> {{assetForm?.value.assetDayExp}}</b>
-  </div>
-  <div>
-    <label for="name">Asset Price: </label> <b> {{assetForm?.value.assetPrice}}</b>
-  </div>
-
-</form>
+<app-table [data]="assetTable"
+      [columnTitle]="columnTables"
+      [fieldName]="fieldName"></app-table>
 <br>
 <br>
-<button (click)="list()" class="btn btn-info">Back to Asset List</button><br>
+<button (click)="list()" class="btn btn-info">Back</button><br>

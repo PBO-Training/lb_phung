@@ -10,30 +10,17 @@ import com.example.AssetManage.entity.AssetEmployeeEntity;
  */
 public class AssetEmployeeAfterMap {
 
-	private Long assetId;
-	private Long employeeId;
 	private String assetEmployeeName;
 	private Date assetEmployeDateRange;
-
-	private AssetAfterMap assetMap;
+	private String assetName;
+	private String employeeName;
 
 	public AssetEmployeeAfterMap(AssetEmployeeEntity assetEmployeeEntity) {
 		super();
 		this.assetEmployeDateRange = assetEmployeeEntity.getAssetEmployeDateRange();
 		this.assetEmployeeName = assetEmployeeEntity.getAssetEmployeeName();
-
-		AssetAfterMap assetType = new AssetAfterMap(assetEmployeeEntity.getAssetId());
-		this.assetMap = assetType;
-//		EmployeeAfterMap ap = new EmployeeAfterMap(EmployeeEntity.getEmployeeId());
-
-	}
-
-	public Long getEmployeeId() {
-		return employeeId;
-	}
-
-	public void setEmployeeId(Long employeeId) {
-		this.employeeId = employeeId;
+		this.assetName = assetEmployeeEntity.getAssetId().getAssetName();
+		this.employeeName = assetEmployeeEntity.getEmployeeId().getEmployeeName();
 	}
 
 	public String getAssetEmployeeName() {
@@ -52,20 +39,20 @@ public class AssetEmployeeAfterMap {
 		this.assetEmployeDateRange = assetEmployeDateRange;
 	}
 
-	public AssetAfterMap getAssetMap() {
-		return assetMap;
+	public String getAssetName() {
+		return assetName;
 	}
 
-	public void setAssetMap(AssetAfterMap assetMap) {
-		this.assetMap = assetMap;
+	public void setAssetName(String assetName) {
+		this.assetName = assetName;
 	}
 
-	public Long getAssetId() {
-		return assetId;
+	public String getEmployeeName() {
+		return employeeName;
 	}
 
-	public void setAssetId(Long assetId) {
-		this.assetId = assetId;
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
 	}
 
 }// end

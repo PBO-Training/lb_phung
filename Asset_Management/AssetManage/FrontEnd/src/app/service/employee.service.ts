@@ -15,6 +15,7 @@ export class EmployeeService {
   private SearchCodeUrl = 'http://192.168.20.115:8080/api/employee/searchcode';
   private deleteUrl = 'http://192.168.20.115:8080/api/employee/delete';
   private createUrl = 'http://192.168.20.115:8080/api/employee/create';
+  private empInfoUrl = 'http://localhost:8080/api/assetemployee/employeeinfo';
 
   constructor(private http: HttpClient) {}
   getEmployeeList(): Observable<any> {
@@ -40,5 +41,8 @@ export class EmployeeService {
 
   updateEmployee(body: Employee): Observable<any> {
     return this.http.post(`${this.updateUrl}`, body);
+  }
+  employeeInfo(body: Employee): Observable<any> {
+    return this.http.post(`${this.empInfoUrl}`, body);
   }
 } // end

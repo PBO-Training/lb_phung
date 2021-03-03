@@ -11,22 +11,26 @@
       <label for="name">Asset Name</label>
       <input type="text" class="form-control" formControlName="assetName">
     </div>
+    <mat-form-field appearance="fill">
+      <label for="name" class="mr-3">Asset Day Exp:</label>
+      <!-- #docregion toggle -->
+      <input matInput [matDatepicker]="picker" formControlName="assetDayExp">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <!-- #enddocregion toggle -->
+    </mat-form-field>
     <div class="mb-2">
-      <label for="name">Asset Day Exp</label>
-      <input type="text" class="form-control" formControlName="assetDayExp">
+      <label for="name" class="mr-3">Asset Price:</label>
+      <input type="number" id="tentacles" name="tentacles" formControlName="assetPrice">
     </div>
-    <div class="mb-2">
-      <label for="name">Asset Price</label>
-      <input type="text" class="form-control" formControlName="assetPrice">
-    </div>
-    <div class="mb-2">
+    <!-- <div class="mb-2">
       <label for="name">Used</label>
       <input type="text" class="form-control" formControlName="used">
     </div>
     <div class="mb-2">
       <label for="name">Do not use</label>
       <input type="text" class="form-control" formControlName="doNotUse">
-    </div>
+    </div> -->
     <div class="mb-2">
       <label for="name">Asset Type Id</label>
       <input type="text" class="form-control" formControlName="assetTypeId">

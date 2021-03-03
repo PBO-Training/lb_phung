@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.AssetManage.dto.AssetAfterMap;
 import com.example.AssetManage.dto.EmployeeAfterMap;
+import com.example.AssetManage.dto.EmployeeDto;
+import com.example.AssetManage.entity.AssetEntity;
 import com.example.AssetManage.entity.EmployeeEntity;
 import com.example.AssetManage.repository.EmployeeRepository;
 
@@ -26,7 +29,7 @@ public class EmployeeController {
 	EmployeeRepository employeeRepo;
 
 	/*
-	 * API find Employee
+	 * API find all Employee
 	 */
 	@RequestMapping(value = "/getall", method = RequestMethod.GET)
 	public ResponseEntity<List<EmployeeAfterMap>> getAll() {
@@ -104,4 +107,6 @@ public class EmployeeController {
 			
 		return ResponseEntity.ok().build();
 	}
+	
+	
 }// end

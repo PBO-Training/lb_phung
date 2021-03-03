@@ -32,5 +32,8 @@ List<AssetEntity> searchByName(@Param("assetName")String name);
 	 * */
 	@Query(value = "SELECT * FROM asset  WHERE is_delete = 0",  nativeQuery = true)
 	List<AssetEntity> getAll();
+	
+	
+	
 }
 	

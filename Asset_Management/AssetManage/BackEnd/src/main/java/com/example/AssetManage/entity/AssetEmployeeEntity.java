@@ -6,18 +6,18 @@ import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.example.AssetManage.entity.primaryKey.PrimaryKeyAssetEmp;
+
 @Entity
 @Table(name = "asset_employee")
-public class AssetEmployeeEntity implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static long serialVersionUID = 1L;
+@IdClass(PrimaryKeyAssetEmp.class)
+public class AssetEmployeeEntity implements Serializable{
+	private static final long serialVersionUID = 1L;
 	/**
 	 * ID of asset
 	 */
@@ -122,15 +122,6 @@ public class AssetEmployeeEntity implements Serializable {
 
 	public void setUpdateBy(int updateBy) {
 		this.updateBy = updateBy;
-	}
-
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	public static void setSerialversionuid(long serialversionuid) {
-		serialVersionUID = serialversionuid;
 	}
 
 	public LocalDate getCreateDate() {

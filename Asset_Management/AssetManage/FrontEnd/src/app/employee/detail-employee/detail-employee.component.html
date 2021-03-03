@@ -1,15 +1,11 @@
 <h2>Employee Details</h2>
 
 <hr />
-<form [formGroup]="employeeForm">
-  <div class="form-Group">
-    <label for="name">Employee Code: </label> <b> {{employeeForm.value.employeeCode}}</b>
-  </div>
-  <div>
-    <label for="name">Employee Name: </label> <b> {{employeeForm?.value.employeeName}}</b>
-  </div>
 
-</form>
+<app-table [data]="employeeTable"
+      [columnTitle]="columnTables"
+      [fieldName]="fieldName"
+      ></app-table>
 <br>
 <br>
 <button (click)="list()" class="btn btn-info">Back</button><br>
