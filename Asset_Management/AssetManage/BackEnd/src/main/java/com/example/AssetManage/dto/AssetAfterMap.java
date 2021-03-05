@@ -41,6 +41,8 @@ public class AssetAfterMap {
 	 */
 	private int used;
 	private int doNotUse;
+	private String assetTypeName;
+	
 	private AssetTypeAfterMap assetTypeMap;
 
 	public AssetAfterMap(AssetEntity assetEntity) {
@@ -54,7 +56,7 @@ public class AssetAfterMap {
 		this.doNotUse = assetEntity.getDoNotUse();
 		AssetTypeAfterMap assetType = new AssetTypeAfterMap(assetEntity.getAssetType());
 		this.assetTypeMap = assetType;
-
+		this.assetTypeName = assetEntity.getAssetType().getAssetTypeName();
 	}
 
 	public Long getAssetId() {
@@ -119,6 +121,14 @@ public class AssetAfterMap {
 
 	public void setDoNotUse(int doNotUse) {
 		this.doNotUse = doNotUse;
+	}
+
+	public String getAssetTypeName() {
+		return assetTypeName;
+	}
+
+	public void setAssetTypeName(String assetTypeName) {
+		this.assetTypeName = assetTypeName;
 	}
 
 }// end

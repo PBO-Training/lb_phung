@@ -3,6 +3,7 @@ import { Asset } from '../../Entity/asset';
 import { AssetService } from '../../service/asset.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+import { AssetType } from 'src/app/Entity/assetType';
 //import { FormBuilder } from "@angular/forms";
 
 @Component({
@@ -13,16 +14,15 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class UpdateAssetComponent implements OnInit {
   assetId: any;
   asset: Asset;
-  // assetTypeId: any[]=[];
+  assetTypedrop: AssetType;
   assetForm = new FormGroup({
     assetId: new FormControl(),
     assetCode: new FormControl(),
     assetName: new FormControl(),
     assetDayExp: new FormControl(),
     assetPrice: new FormControl(),
-    used: new FormControl(),
-    doNotUse: new FormControl(),
     assetTypeId: new FormControl(),
+    assetTypeName: new FormControl(),
   });
   constructor(
     private route: ActivatedRoute,
@@ -66,13 +66,17 @@ export class UpdateAssetComponent implements OnInit {
           assetName: data.assetName,
           assetDayExp: data.assetDayExp,
           assetPrice: data.assetPrice,
-          used: data.used,
-          doNotUse: data.doNotUse,
           assetTypeId: data.assetTypeMap.assetTypeId,
         });
       },
       (error) => console.log(error)
     );
+      this.assetService.getAssetType().subscribe(
+        (data) => {
+          this.assetTypedrop = data;
+        },
+        (error) => console.log(error)
+      );
   }
   gotoList() {
     this.router.navigate(['/listAsset']);

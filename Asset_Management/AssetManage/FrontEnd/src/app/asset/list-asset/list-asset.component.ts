@@ -9,6 +9,7 @@ import { Asset } from '../../Entity/asset';
 import { AssetService } from '../../service/asset.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AssetType } from 'src/app/Entity/assetType';
 @Component({
   selector: 'app-list-asset',
   templateUrl: './list-asset.component.html',
@@ -16,16 +17,26 @@ import { Observable } from 'rxjs';
 })
 export class ListAssetComponent implements OnInit, OnChanges {
   assetTable: Asset[];
+  assetType: AssetType[];
   assetReq: Asset;
-  columnTables = ['Code', 'Name', 'DayExp', 'Price($)'];
-  fieldName = ['assetCode', 'assetName', 'assetDayExp', 'assetPrice'];
+  columnTables = [
+
+    'Name',
+    'Date of manufacture ',
+    'Price($)',
+    'Asset Type',
+  ];
+  fieldName = [
+
+    'assetName',
+    'assetDayExp',
+    'assetPrice',
+    'assetTypeName',
+  ];
   assetId = 'assetId';
   asset: any;
 
-  constructor(
-    private assetService: AssetService,
-    private router: Router
-  ) {}
+  constructor(private assetService: AssetService, private router: Router) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     throw new Error('Method not implemented.');
@@ -33,11 +44,18 @@ export class ListAssetComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.reloadData();
+
+    this.assetService.getAssetType().subscribe(
+      (data) => {
+        this.assetType = data;
+      },
+      (error) => console.log(error)
+    );
   }
   reloadData(): void {
     this.assetService.getAssetList().subscribe(
       (list) => {
-        console.log(list);
+        console.log('abcsd', list);
 
         this.assetTable = list;
       },
@@ -99,7 +117,7 @@ export class ListAssetComponent implements OnInit, OnChanges {
       this.router.navigate(['updateAsset', value.value]);
     }
   }
-   link() {
+  link() {
     this.router.navigate(['addAsset']);
   }
 }

@@ -18,8 +18,8 @@ import { Observable } from 'rxjs';
 export class ListAssetTypeComponent implements OnInit, OnChanges {
   assetTypeTable: AssetType[];
   assetTypeReq: AssetType;
-  columnTables = ['Code', 'Name'];
-  fieldName = ['assetTypeCode', 'assetTypeName'];
+  columnTables = [ 'Name'];
+  fieldName = [ 'assetTypeName'];
   assetTypeId = 'assetTypeId';
   assetType: any;
   constructor(

@@ -14,6 +14,7 @@ public class AssetEmployeeAfterMap {
 	private Date assetEmployeDateRange;
 	private String assetName;
 	private String employeeName;
+	private String assetTypeName;
 
 	public AssetEmployeeAfterMap(AssetEmployeeEntity assetEmployeeEntity) {
 		super();
@@ -21,6 +22,7 @@ public class AssetEmployeeAfterMap {
 		this.assetEmployeeName = assetEmployeeEntity.getAssetEmployeeName();
 		this.assetName = assetEmployeeEntity.getAssetId().getAssetName();
 		this.employeeName = assetEmployeeEntity.getEmployeeId().getEmployeeName();
+		this.assetTypeName = assetEmployeeEntity.getAssetId().getAssetType().getAssetTypeName();
 	}
 
 	public String getAssetEmployeeName() {
@@ -53,6 +55,14 @@ public class AssetEmployeeAfterMap {
 
 	public void setEmployeeName(String employeeName) {
 		this.employeeName = employeeName;
+	}
+
+	public String getAssetTypeName() {
+		return assetTypeName;
+	}
+
+	public void setAssetTypeName(String assetTypeName) {
+		this.assetTypeName = assetTypeName;
 	}
 
 }// end

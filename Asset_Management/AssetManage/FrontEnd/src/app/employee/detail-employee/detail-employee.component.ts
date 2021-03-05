@@ -14,8 +14,8 @@ export class DetailEmployeeComponent implements OnInit {
   employeeId: any;
   employeeTable: Employee[];
   employee: Employee;
-  columnTables = ['Employee Name', 'Asset Name', 'Date range'];
-  fieldName = ['employeeName', 'assetName', 'assetEmployeDateRange'];
+  columnTables = ['Employee Name', 'Asset Name','Asset Type', 'Date range'];
+  fieldName = ['employeeName', 'assetName','assetTypeName', 'assetEmployeDateRange'];
 
   constructor(
     private route: ActivatedRoute,

@@ -15,11 +15,15 @@ export class AssetService {
   private SearchCodeUrl = 'http://192.168.20.115:8080/api/asset/searchcode';
   private deleteUrl = 'http://192.168.20.115:8080/api/asset/delete';
   private createUrl = 'http://192.168.20.115:8080/api/asset/create';
-  private assetInfoUrl ='http://localhost:8080/api/assetemployee/assetinfo';
+  private assetInfoUrl = 'http://localhost:8080/api/assetemployee/assetinfo';
+  private getAssetTypeUrl = 'http://192.168.20.115:8080/api/assettype/getall';
 
   constructor(private http: HttpClient) {}
   getAssetList(): Observable<any> {
     return this.http.get(`${this.getAllUrl}`);
+  }
+  getAssetType(): Observable<any> {
+    return this.http.get(`${this.getAssetTypeUrl}`);
   }
   searchNameAsset(body: Asset): Observable<any> {
     return this.http.post<any>(`${this.SearchNameUrl}`, body);
@@ -42,7 +46,7 @@ export class AssetService {
   updateAsset(body: Asset): Observable<any> {
     return this.http.post(`${this.updateUrl}`, body);
   }
-  assetInfo(body: Asset): Observable<any>{
-    return this.http.post(`${this.assetInfoUrl}`, body)
+  assetInfo(body: Asset): Observable<any> {
+    return this.http.post(`${this.assetInfoUrl}`, body);
   }
 } // end

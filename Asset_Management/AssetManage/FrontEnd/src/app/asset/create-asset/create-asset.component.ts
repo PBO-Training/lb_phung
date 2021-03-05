@@ -3,6 +3,7 @@ import { AssetService } from '../../service/asset.service';
 import { Asset } from '../../Entity/asset';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+import { AssetType } from 'src/app/Entity/assetType';
 
 @Component({
   selector: 'app-create-asset',
@@ -12,6 +13,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class CreateAssetComponent implements OnInit {
   assetId: number;
   asset: Asset;
+  assetTypedrop: AssetType;
   submitted = false;
   assetForm = new FormGroup({
     assetId: new FormControl(),
@@ -26,7 +28,14 @@ export class CreateAssetComponent implements OnInit {
   // @Input() fieldName: [];
   constructor(private assetService: AssetService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.assetService.getAssetType().subscribe(
+      (data) => {
+        this.assetTypedrop=data;
+      },
+      (error) => console.log(error)
+    );
+  }
   newAsset(): void {
     this.submitted = false;
   }

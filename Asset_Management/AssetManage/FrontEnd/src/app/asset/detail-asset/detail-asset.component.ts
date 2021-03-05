@@ -13,8 +13,8 @@ export class DetailAssetComponent implements OnInit {
   assetId: any;
   asset: Asset;
   assetTable: Asset[];
-  columnTables = ['asset Name', 'employee Name', 'Date Range'];
-  fieldName = ['assetName', 'employeeName', 'assetEmployeDateRange'];
+  columnTables = ['asset Name', 'employee Name','Asset Type', 'Date Range'];
+  fieldName = ['assetName', 'employeeName','assetTypeName', 'assetEmployeDateRange'];
 
   constructor(
     private route: ActivatedRoute,
