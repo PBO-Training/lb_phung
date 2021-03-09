@@ -14,20 +14,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.AssetManage.dto.AssetAfterMap;
 import com.example.AssetManage.dto.EmployeeAfterMap;
 import com.example.AssetManage.dto.EmployeeDto;
-import com.example.AssetManage.entity.AssetEntity;
 import com.example.AssetManage.entity.EmployeeEntity;
 import com.example.AssetManage.repository.EmployeeRepository;
-
+/**
+ * [Description]: Search Controller for Employee Master Table<br>
+ * @author lb_phung
+ *
+ */
+import com.example.AssetManage.repository.SearchEmployeeRepo;
 @RestController
 @RequestMapping("/api/employee")
 @CrossOrigin(origins = "*")
 public class EmployeeController {
 	@Autowired
 	EmployeeRepository employeeRepo;
-
+	SearchEmployeeRepo searchEmployeeRepo;
 	/*
 	 * API find all Employee
 	 */
@@ -46,6 +49,8 @@ public class EmployeeController {
 
 	/*
 	 * API find Employee by id
+	 * 
+	 * @param employeeEntity
 	 */
 	@RequestMapping(value = "/getid", method = RequestMethod.POST)
 	public EmployeeAfterMap getid(@RequestBody EmployeeEntity employeeEntity) {
@@ -56,10 +61,12 @@ public class EmployeeController {
 
 	/*
 	 * API Get By Name Employee
+	 * 
+	 * @param employeeEntity
 	 */
 	@PostMapping("/searchname")
-	public ResponseEntity<?> searchByName(@RequestBody EmployeeEntity employeeEntity) {
-		List<EmployeeEntity> employ = employeeRepo.searchByName(employeeEntity.getEmployeeName());
+	public ResponseEntity<?> searchEmp(@RequestBody EmployeeDto employeeDto) {
+		List<EmployeeEntity> employ = searchEmployeeRepo.searchEmp(employeeDto);
 		List<EmployeeAfterMap> listempMap = new ArrayList<EmployeeAfterMap>();
 		for (int i = 0; i < employ.size(); i++) {
 			System.out.println(employ.get(i));
@@ -73,6 +80,8 @@ public class EmployeeController {
 
 	/*
 	 * API Create Employee
+	 *
+	 * @param employeeEntity
 	 */
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public EmployeeEntity create(@RequestBody EmployeeEntity employeeEntity) {
@@ -81,6 +90,8 @@ public class EmployeeController {
 
 	/*
 	 * API update EmployeeEntity
+	 * 
+	 * @param employeeEntity
 	 */
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 
@@ -100,6 +111,8 @@ public class EmployeeController {
 
 	/*
 	 * API Delete By Id employee
+	 * 
+	 * @param employeeEntity
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public ResponseEntity<EmployeeEntity> delete(@RequestBody EmployeeEntity employeeEntity) {

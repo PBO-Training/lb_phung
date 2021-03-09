@@ -19,20 +19,8 @@ export class ListAssetComponent implements OnInit, OnChanges {
   assetTable: Asset[];
   assetType: AssetType[];
   assetReq: Asset;
-  columnTables = [
-
-    'Name',
-    'Date of manufacture ',
-    'Price($)',
-    'Asset Type',
-  ];
-  fieldName = [
-
-    'assetName',
-    'assetDayExp',
-    'assetPrice',
-    'assetTypeName',
-  ];
+  columnTables = ['Name', 'Date of purchase ', 'Price($)', 'Asset Type'];
+  fieldName = ['assetName', 'assetDayExp', 'assetPrice', 'assetTypeName'];
   assetId = 'assetId';
   asset: any;
 

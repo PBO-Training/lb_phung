@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.example.AssetManage.dto.AssetEmployeeDto;
 import com.example.AssetManage.entity.AssetEmployeeEntity;
 import com.example.AssetManage.entity.AssetEntity;
 import com.example.AssetManage.entity.EmployeeEntity;
@@ -58,8 +59,16 @@ public interface AssetEmployeeRepository extends JpaRepository<AssetEmployeeEnti
 			"        AND ae.asset_id = a.asset_id\r\n" + 
 			"WHERE\r\n" + 
 			"    a.asset_id = :assetId", nativeQuery = true)
-
 	List<AssetEmployeeEntity> getAssetInfo(@Param("assetId")Long assetId);
+//	List<AssetEmployeeEntity> getAssetInfo(AssetEmployeeDto dto);	
+//	 StringBuffer selectString = new StringBuffer("SELECT * ");
+//	  StringBuffer fromString = new StringBuffer("FROM asset_employee ae ");
+//	  StringBuffer joinString = new StringBuffer("Inner join asset a inner join employee e");
+//	  StringBuffer onString = new  StringBuffer("ON ae.employee_id=e.employee_id and ae.asset_id = a.asset_id");
+//	  StringBuffer whereString = new StringBuffer("WHERE  a.asset_id = :assetId AND ae.is_delete=0 ");
+//	  StringBuffer orderByString = new StringBuffer("order by asset_name asc ");
+//	  StringBuffer queryString = new StringBuffer();
+	
 }
 
 	

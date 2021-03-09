@@ -17,7 +17,8 @@ public interface AssetRepository extends JpaRepository<AssetEntity, Long> {
 	 * SearchName Query
 	 * */
 	@Query(value="select * from asset where asset_name like %:assetName%", nativeQuery = true)
-List<AssetEntity> searchByName(@Param("assetName")String name);	
+	List<AssetEntity> searchByName(@Param("assetName")String name);	
+	
 	/*
 	 * Delete asset Query 
 	 * Update is_delete = 1
@@ -30,7 +31,7 @@ List<AssetEntity> searchByName(@Param("assetName")String name);
 	 * find all asset Query 
 	 * find all where is_delete = 1
 	 * */
-	@Query(value = "SELECT * FROM asset  WHERE is_delete = 0",  nativeQuery = true)
+	@Query(value = "SELECT * FROM asset  WHERE is_delete = 0 ",  nativeQuery = true)
 	List<AssetEntity> getAll();
 	
 	

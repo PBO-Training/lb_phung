@@ -17,8 +17,8 @@ import { Observable } from 'rxjs';
 export class ListEmployeeComponent implements OnInit, OnChanges {
   employeeTable: Employee[];
   employeeReq: Employee;
-  columnTables = [ 'Name'];
-  fieldName = [ 'employeeName'];
+  columnTables = [ 'Code','Name'];
+  fieldName = ['employeeCode', 'employeeName'];
   employeeId = 'employeeId';
   employee: any;
 

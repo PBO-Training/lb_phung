@@ -17,7 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.AssetManage.dto.AssetTypeAfterMap;
 import com.example.AssetManage.entity.AssetTypeEntity;
 import com.example.AssetManage.repository.AssetTypeRepository;
-
+/**
+ * [Description]: Search Controller for AssetType Master Table<br>
+ * @author lb_phung
+ *
+ */
 @RestController
 @RequestMapping("/api/assettype")
 @CrossOrigin(origins = "*")

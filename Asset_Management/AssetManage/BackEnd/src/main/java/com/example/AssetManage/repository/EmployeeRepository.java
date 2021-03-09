@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.AssetManage.dto.EmployeeDto;
 import com.example.AssetManage.entity.EmployeeEntity;
 @Repository
 public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Long> {
@@ -16,15 +17,29 @@ public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Long> 
  * SearchName Query
  * @param: employeeName
  * */
-	@Query(value="select * from employee where employee_name like %:employeeName%", nativeQuery = true)
-List<EmployeeEntity> searchByName(@Param("employeeName")String name);
-	
+//	@Query(value="select * from employee where employee_name like %:employeeName% and is_delete=0", nativeQuery = true)
+//	List<EmployeeEntity> searchByName(@Param("employeeName")String name);
+	 /**
+     * [Description]: Search a list Employee<br/>
+     * [ Remarks ]:<br/>
+     *
+     * @param EmployeeDto
+     * 
+     * @return List Employee
+     */
+	//List<EmployeeEntity> searchEmp(EmployeeDto empDto);
+
+	 
+	 
+	 
+	 
+	 
 	/*
 	 * find all employee Query 
 	 * find all where is_delete = 1
 	 * */
 	@Query(value = "SELECT * FROM employee  WHERE is_delete = 0",  nativeQuery = true)
-	List<EmployeeEntity> getAll();	
+	List<EmployeeEntity> getAll();
 	/*
 	 * Delete employee Query
 	 * Update is_delete =1 

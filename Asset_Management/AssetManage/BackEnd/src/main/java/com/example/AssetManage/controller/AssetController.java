@@ -22,6 +22,7 @@ import com.example.AssetManage.repository.AssetRepository;
 import com.example.AssetManage.repository.AssetTypeRepository;
 
 /**
+ * [Description]: Search Controller for Asset Master Table<br>
  * @author lb_phung
  *
  */
@@ -54,10 +55,12 @@ public class AssetController {
 
 	/*
 	 * API Get By Name AssetEntity
+	 *
+	 * @param AssetEntity
 	 */
 	@PostMapping("/searchname")
-	public ResponseEntity<?> searchByName(@RequestBody AssetEntity assetEntity) {
-		List<AssetEntity> asset = assetRepository.searchByName(assetEntity.getAssetName());
+	public ResponseEntity<?> searchByName(@RequestBody AssetDto assetDto) {
+		List<AssetEntity> asset = assetRepository.searchByName(assetDto.getAssetName());
 		List<AssetAfterMap> listAssetMap = new ArrayList<AssetAfterMap>();
 		for (int i = 0; i < asset.size(); i++) {
 			System.out.println(asset.get(i));
@@ -70,6 +73,8 @@ public class AssetController {
 
 	/*
 	 * API Get By Id AssetEntity
+	 * 
+	 * @param AssetEntity
 	 */
 	@RequestMapping(value = "/getid", method = RequestMethod.POST)
 	public AssetAfterMap getId(@RequestBody AssetEntity assetEntity) {
@@ -80,6 +85,8 @@ public class AssetController {
 
 	/*
 	 * API Create AssetEntity
+	 * 
+	 * @param AssetEntity
 	 */
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public ResponseEntity<?> createAsset(@RequestBody AssetDto assetDto) {
@@ -101,6 +108,8 @@ public class AssetController {
 
 	/*
 	 * API Update AssetEntity
+	 * 
+	 * @param AssetEntity
 	 */
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public ResponseEntity<AssetEntity> updateAsset(@RequestBody AssetEntity assetEntity) {
@@ -124,6 +133,8 @@ public class AssetController {
 
 	/*
 	 * API Delete By Id AssetEntity
+	 * 
+	 * @param AssetEntity
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public ResponseEntity<AssetEntity> deleteAsset(@RequestBody AssetEntity assetEntity) {

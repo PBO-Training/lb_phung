@@ -10,6 +10,7 @@ public class AssetEmployeeDto {
 	public String assetEmployeeName;
 	
 	public Date assetEmployeDateRange;
+	
 
 	public long getAssetId() {
 		return assetId;
